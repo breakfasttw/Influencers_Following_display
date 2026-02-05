@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>網紅社交生態系 - 互動儀表板</title>
+        <script src="https://unpkg.com/force-graph"></script>
+        <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body class="flex flex-col">
+        <header
+            class="p-2 md:p-5 lg:p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
+        >
+            <div class="flex items-center space-x-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-blue-400 mobile-disable">
+                        網紅社交生態系
+                    </h1>
+                    <p class="text-xs text-slate-500 mobile-disable">
+                        200 Influencers Interactive Demo
+                    </p>
+                </div>
+                <nav class="flex space-x-2 lg:space-x-4 ml-4">
+                    <button
+                        onclick="switchTab('network')"
+                        id="btn-network"
+                        class="tab-active py-2 px-1 text-lg font-medium transition-all"
+                    >
+                        🌐
+                        <span class="mobile-disable">社交網路</span>
+                    </button>
+                    <button
+                        onclick="switchTab('heatmap')"
+                        id="btn-heatmap"
+                        class="py-2 px-1 text-lg font-medium text-slate-400 transition-all"
+                    >
+                        📊
+                        <span class="mobile-disable">聚類矩陣</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div
+                id="search-section"
+                class="flex items-center space-x-1 lg:space-x-2"
+            >
+                <input
+                    type="text"
+                    id="influencer-search"
+                    class="search-input text-sm"
+                    placeholder="搜尋網紅名稱..."
+                />
+                <button
+                    onclick="handleSearch()"
+                    class="bg-blue-600 hover:bg-blue-500 text-white px-3 lg:px-6 py-1 lg:py-2 rounded-full text-sm font-normal lg:font-medium transition-colors"
+                >
+                    🔍
+                    <span class="mobile-disable">尋找</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow relative p-4">
+            <div id="tab-network" class="chart-container">
+                <div
+                    id="network-viz"
+                    class="w-full h-full bg-slate-800 rounded-xl overflow-hidden shadow-2xl"
+                ></div>
+                <div
+                    class="absolute bottom-8 right-8 flex flex-row gap-2 lg:flex-col space-y-2"
+                >
+                    <button
+                        onclick="unlockNodes()"
+                        class="bg-red-500/80 hover:bg-red-600 p-2 rounded-lg text-xs backdrop-blur-md text-white"
+                    >
+                        🔓
+                        <span class="mobile-disable">解除所有固定</span>
+                    </button>
+                    <button
+                        onclick="resetView()"
+                        class="bg-slate-700/80 hover:bg-slate-600 p-2 rounded-lg text-xs backdrop-blur-md text-white"
+                    >
+                        🏠
+                        <span class="mobile-disable">重置視角</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="tab-heatmap" class="chart-container hidden flex flex-col">
+                <div class="flex justify-end mb-2 space-x-2">
+                    <span class="text-xs text-slate-400 self-center"
+                        >💡 技巧：框選矩陣局部區域可放大查看姓名</span
+                    >
+                    <button
+                        onclick="toggleDetailedLabels()"
+                        id="btn-toggle-labels"
+                        class="bg-blue-600/80 hover:bg-blue-600 px-3 py-1 rounded text-xs text-white transition-colors"
+                    >
+                        🔍 顯示所有姓名 (精細模式)
+                    </button>
+                </div>
+                <div
+                    id="heatmap-viz"
+                    class="w-full flex-grow bg-slate-800 rounded-xl overflow-hidden shadow-2xl"
+                ></div>
+            </div>
+        </main>
+
+        <script src="main.js"></script>
+    </body>
+</html>
