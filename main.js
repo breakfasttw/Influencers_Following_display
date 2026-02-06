@@ -50,7 +50,7 @@ function initNetwork() {
         .nodeLabel(
             (node) => `
             <div style="color: #60a5fa; font-weight: bold; margin-bottom: 4px;">${node.name}</div>
-            <div style="color: #94a3b8; font-size: 12px;">
+            <div style="color: #a2abb8; font-size: 12px;">
                 派系：${node.group}<br/>
                 <hr style="border-color: #334155; margin: 4px 0;"/>
                 被追蹤數：<span style="color: #f8fafc">${node.metrics.in_degree}</span><br/>
@@ -70,7 +70,7 @@ function initNetwork() {
         .linkColor((link) =>
             highlightLinks.has(link) ? "#60a5fa" : "rgba(148, 163, 184, 0.1)",
         )
-        .linkWidth((link) => (highlightLinks.has(link) ? 2 : 0.5))
+        .linkWidth((link) => (highlightLinks.has(link) ? 2.5 : 0.5))
         .onNodeDrag((node) => {
             highlightNodes.clear();
             highlightLinks.clear();
@@ -114,7 +114,7 @@ function initNetwork() {
                 ctx.font = `${isFocus ? "bold " : ""}${fontSize}px Iansui`;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
-                ctx.fillStyle = isFocus ? "#ffffff" : "#f8fafc";
+                ctx.fillStyle = isFocus ? "#e062e2" : "#c4c6c6";
                 ctx.fillText(label, node.x, node.y + radius + fontSize + 2);
             }
         })
