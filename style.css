@@ -1,6 +1,9 @@
 @font-face {
     font-family: "Iansui";
-    src: url("https://cdn.jsdelivr.net/gh/lfont-project/iansui/fonts/Iansui-Regular.ttf");
+    src: url("./fonts/Iansui-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* 優化載入體驗，避免字體載入前文字隱形 */
 }
 body {
     font-family: "Iansui", sans-serif;
@@ -103,4 +106,10 @@ body {
 }
 .leader-link:hover {
     color: #93c5fd;
+}
+
+/* [新增] 演算法下拉選單樣式 */
+#algo-selector option {
+    background-color: #1e293b;
+    color: #cbd5e1;
 }

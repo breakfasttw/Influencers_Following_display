@@ -23,12 +23,12 @@
     </head>
     <body class="flex flex-col">
         <header
-            class="p-2 md:p-5 lg:p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
+            class="relative z-50 p-2 md:p-5 lg:p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
         >
             <div class="flex items-center space-x-6">
                 <div>
                     <h1 class="text-2xl font-bold text-blue-400 mobile-disable">
-                        網紅社交生態系
+                        Social Network Lab
                     </h1>
                     <p class="text-xs text-slate-500 mobile-disable">
                         Influencers Interactive Demo
@@ -63,6 +63,9 @@
                     id="influencer-search"
                     class="search-input text-sm"
                     placeholder="搜尋網紅名稱..."
+                    onkeyup="
+                        if (event.key === 'Enter') handleSearch(this.value);
+                    "
                 />
                 <button
                     onclick="handleSearch()"
@@ -75,10 +78,27 @@
         </header>
 
         <main class="flex-grow relative p-4">
+            <div
+                class="absolute z-50 top-4 right-4 flex items-center gap-2 bg-slate-700/50 px-3 py-1 rounded-lg border border-slate-600"
+            >
+                <label for="algo-selector" class="text-xs text-slate-400"
+                    >演算法類別:</label
+                >
+                <select
+                    id="algo-selector"
+                    onchange="switchAlgorithm(this.value)"
+                    class="pr-6 bg-transparent text-sm text-blue-300 outline-none cursor-pointer"
+                >
+                    <option value="louvain">Louvain</option>
+                    <option value="greedy">Greedy Modularity</option>
+                    <option value="walktrap">WalkTrap</option>
+                </select>
+            </div>
+
             <button
                 id="btn-legend-open"
                 onclick="toggleLegend()"
-                class="absolute top-4 left-4 z-50 bg-slate-700/90 hover:bg-blue-600 text-white p-2 p-md-3 rounded-full shadow-lg transition-all border border-slate-600"
+                class="absolute top-4 left-4 z-50 bg-slate-700/90 hover:bg-blue-600 text-white p-2 p-md-3 shadow-lg transition-all border border-slate-600"
                 title="顯示分群圖例"
             >
                 📊 <span class="text-xs ml-1 mobile-disable">圖例</span>
@@ -90,7 +110,10 @@
             >
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-md font-bold text-blue-400">
+                        <h2
+                            id="legend-title"
+                            class="text-md font-bold text-blue-400"
+                        >
                             分群報表圖例
                         </h2>
                         <button
