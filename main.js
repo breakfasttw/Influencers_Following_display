@@ -172,16 +172,15 @@ function renderLegend() {
 
         html += `
             <tr class="legend-row-header border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
-                <td class="p-2 w-2">
-                    <div style="background-color: ${color}; width: 8px; height: 8px; border-radius: 50%;"></div>
-                </td>
-                <td class="p-2 font-bold text-slate-200">${item.name}</td>
+                
+                <td class="p-2 w-3" style="background-color: ${color}; border-radius: 8px 0 0 8px;"></td>
+                <td class="p-2 text-slate-200  text-xs ">${item.name}</td>
                 <td class="p-2">
-                    <span class="leader-link text-blue-400 cursor-pointer hover:text-blue-300 hover:underline" onclick="focusNodeByName('${item.leader}')">
-                        👑 ${item.leader}
+                    <span class="leader-link text-xs text-blue-400 cursor-pointer hover:text-blue-300 hover:underline" onclick="focusNodeByName('${item.leader}')">
+                        👑${item.leader}
                     </span>
                 </td>
-                <td class="p-2 text-slate-500 text-xs text-right">${item.count}人</td>
+                <td class="p-2 text-white text-xs text-right">${item.count}人</td>
                 <td class="p-2 text-right">
                     <button onclick="toggleAccordion(${index})" class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-2 py-1 rounded transition-colors">
                         名單
@@ -234,7 +233,7 @@ function focusNodeByName(name) {
         // 手機版自動收合
         if (window.innerWidth < 1024) toggleLegend();
     } else {
-        alert(`未找到網紅：${name}`);
+        alert(`未找到網紅：${name}，目前為 0-Degree`);
     }
 }
 
@@ -244,7 +243,20 @@ function initNetwork() {
     graphInstance = ForceGraph()(elem)
         .graphData(gData)
         .nodeId("id")
-        .nodeLabel((node) => `${node.name} (Group: ${node.group})`)
+        //--- 加回數據顯示 (Hover Tooltip) ---
+        .nodeLabel(
+            (node) => `
+            <div style="color: #60a5fa; font-weight: bold; margin-bottom: 4px;">${node.name}</div>
+            <div style="color: #a2abb8; font-size: 12px;">
+                派系：${node.group}<br/>
+                <hr style="border-color: #334155; margin: 4px 0;"/>
+                被追蹤數：<span style="color: #f8fafc">${node.metrics.in_degree}</span><br/>
+                追蹤他人：<span style="color: #f8fafc">${node.metrics.out_degree}</span><br/>
+                雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span>
+            </div>
+        `,
+        )
+        //.nodeLabel((node) => `${node.name} (Group: ${node.group})`)
         .nodeVal((node) => node.val) // 節點大小
         .nodeColor((node) => node.color)
         .nodeCanvasObject((node, ctx, globalScale) => {
@@ -267,7 +279,7 @@ function initNetwork() {
                 ctx.shadowBlur = 0; // 重置
 
                 // 加粗邊框
-                ctx.lineWidth = 2 / globalScale;
+                ctx.lineWidth = 3 / globalScale;
                 ctx.strokeStyle = "#fff";
                 ctx.stroke();
             }
@@ -280,10 +292,22 @@ function initNetwork() {
             ) {
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
-                ctx.fillStyle = "#fff";
-                // 文字背景
+                // [新增] 決定顏色邏輯
+                // 判斷是否為「選中狀態」：即 searchNode (搜尋點) 或其鄰居 (highlightNodes)
+                const isHighlighted =
+                    node === searchNode || highlightNodes.has(node);
+
+                // 背景顏色：選中時用純黑，未選中用半透明黑
+                const bgColor = isHighlighted
+                    ? "rgba(0, 0, 0, 1)"
+                    : "rgba(0, 0, 0, 0.6)";
+
+                // 文字顏色：選中時用粉紅色，未選中用白色
+                const textColor = isHighlighted ? "#eaed15" : "#ffffff"; // #FF69B4 是標準 HotPink
+
                 const textWidth = ctx.measureText(label).width;
-                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                // 1. 繪製文字背景
+                ctx.fillStyle = bgColor;
                 ctx.fillRect(
                     node.x - textWidth / 2 - 2,
                     node.y + r + 2,
@@ -291,7 +315,8 @@ function initNetwork() {
                     fontSize + 4,
                 );
 
-                ctx.fillStyle = "#fff";
+                // 2. 繪製文字內容
+                ctx.fillStyle = textColor;
                 ctx.fillText(label, node.x, node.y + r + fontSize / 2 + 4);
             }
         })
@@ -306,16 +331,19 @@ function initNetwork() {
         ) // slate-400
         .onNodeClick(focusNode)
         .onNodeHover((node) => {
+            // [修改] 滑鼠懸停時，同時保留 searchNode 的高亮
+            updateHighlightSets(node);
+            elem.style.cursor = node ? "pointer" : null;
             // 滑鼠懸停互動
-            highlightNodes.clear();
-            highlightLinks.clear();
-            if (node) {
-                highlightNodes.add(node);
-                node.neighbors.forEach((neighbor) =>
-                    highlightNodes.add(neighbor),
-                );
-                node.links.forEach((link) => highlightLinks.add(link));
-            }
+            // highlightNodes.clear();
+            // highlightLinks.clear();
+            // if (node) {
+            //     highlightNodes.add(node);
+            //     node.neighbors.forEach((neighbor) =>
+            //         highlightNodes.add(neighbor),
+            //     );
+            //     node.links.forEach((link) => highlightLinks.add(link));
+            // }
             // 觸發重新渲染 (update frame)
             // 這裡不需呼叫 graphData，ForceGraph 會自動處理 hover 狀態，
             // 但因為我們用了 nodeCanvasObject，需要手動告知

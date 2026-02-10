@@ -23,11 +23,11 @@
     </head>
     <body class="flex flex-col">
         <header
-            class="relative z-50 p-2 md:p-5 lg:p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
+            class="relative z-50 py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
         >
             <div class="flex items-center space-x-6">
                 <div>
-                    <h1 class="text-2xl font-bold text-blue-400 mobile-disable">
+                    <h1 class="text-md font-bold text-blue-400 mobile-disable">
                         Social Network Lab
                     </h1>
                     <p class="text-xs text-slate-500 mobile-disable">
@@ -41,7 +41,7 @@
                         class="tab-active py-2 px-1 text-lg font-medium transition-all"
                     >
                         🌐
-                        <span class="mobile-disable">社交網路</span>
+                        <span class="mobile-disable text-sm">社交網路</span>
                     </button>
                     <button
                         onclick="switchTab('heatmap')"
@@ -49,7 +49,7 @@
                         class="py-2 px-1 text-lg font-medium text-slate-400 transition-all hidden"
                     >
                         📊
-                        <span class="mobile-disable">聚類矩陣</span>
+                        <span class="mobile-disable text-sm">聚類矩陣</span>
                     </button>
                 </nav>
             </div>
@@ -61,7 +61,7 @@
                 <input
                     type="text"
                     id="influencer-search"
-                    class="search-input text-sm"
+                    class="search-input text-xs"
                     placeholder="搜尋網紅名稱..."
                     onkeyup="
                         if (event.key === 'Enter') handleSearch(this.value);
@@ -69,10 +69,10 @@
                 />
                 <button
                     onclick="handleSearch()"
-                    class="bg-blue-600 hover:bg-blue-500 text-white px-3 lg:px-6 py-1 lg:py-2 rounded-full text-sm font-normal lg:font-medium transition-colors"
+                    class="bg-blue-600 hover:bg-blue-500 text-white px-3 lg:px-4 py-1 lg:py-2 rounded-full text-sm font-normal lg:font-medium transition-colors"
                 >
                     🔍
-                    <span class="mobile-disable">尋找</span>
+                    <span class="mobile-disable text-sm">尋找</span>
                 </button>
             </div>
         </header>
@@ -112,7 +112,7 @@
                     <div class="flex justify-between items-center mb-6">
                         <h2
                             id="legend-title"
-                            class="text-md font-bold text-blue-400"
+                            class="text-sm font-bold text-blue-400"
                         >
                             分群報表圖例
                         </h2>
