@@ -7,7 +7,7 @@
             name="description"
             content="Influencers social network cluster demo site"
         />
-        <title>網紅社交生態系</title>
+        <title>Social Network Lab</title>
         <script src="https://unpkg.com/force-graph"></script>
         <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
@@ -15,10 +15,6 @@
         <link rel="apple-touch-icon" sizes="180x180" href="./pic/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Iansui&display=swap"
-            rel="stylesheet"
-        />
         <link rel="stylesheet" href="style.css" />
     </head>
     <body class="flex flex-col">
@@ -82,7 +78,7 @@
                 class="absolute z-50 top-4 right-4 flex items-center gap-2 bg-slate-700/50 px-3 py-1 rounded-lg border border-slate-600"
             >
                 <label for="algo-selector" class="text-xs text-slate-400"
-                    >演算法類別:</label
+                    >演算法:</label
                 >
                 <select
                     id="algo-selector"
@@ -114,7 +110,7 @@
                             id="legend-title"
                             class="text-sm font-bold text-blue-400"
                         >
-                            分群報表圖例
+                            分群圖例
                         </h2>
                         <button
                             onclick="toggleLegend()"

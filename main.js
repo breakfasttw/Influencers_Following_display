@@ -52,7 +52,7 @@ async function switchAlgorithm(algoKey) {
 
     // 更新標題 (加入防呆檢查)
     if (legendTitle) {
-        legendTitle.innerText = `分群報表圖例 (${config.name})`;
+        legendTitle.innerText = `分群圖例 (${config.name})`;
     }
 
     if (legendContent) {
@@ -170,6 +170,7 @@ function renderLegend() {
             ? representativeNode.color || representativeNode.fill
             : "#475569";
 
+        const sortedMembers = [...item.members].sort().join("、");
         html += `
             <tr class="legend-row-header border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
                 
@@ -189,9 +190,9 @@ function renderLegend() {
             </tr>
             <tr>
                 <td colspan="5" class="p-0">
-                    <div id="accordion-${index}" class="accordion-content text-xs text-slate-400 bg-slate-900/50 px-4">
+                    <div id="accordion-${index}" class="accordion-content text-xs text-white bg-slate-900/50 px-4">
                         <div class="py-2 leading-relaxed">
-                            ${item.members.join("、")}
+                            ${sortedMembers}
                         </div>
                     </div>
                 </td>
