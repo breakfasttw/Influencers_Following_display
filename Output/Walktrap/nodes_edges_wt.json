@@ -3,8 +3,8 @@
     {
       "id": "蔡阿嘎",
       "name": "蔡阿嘎",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 13.0,
       "metrics": {
         "in_degree": 48,
@@ -16,8 +16,8 @@
     {
       "id": "PanSci-泛科學",
       "name": "PanSci-泛科學",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.25,
       "metrics": {
         "in_degree": 5,
@@ -29,8 +29,8 @@
     {
       "id": "黃阿瑪的後宮生活",
       "name": "黃阿瑪的後宮生活",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 4.75,
       "metrics": {
         "in_degree": 15,
@@ -42,8 +42,8 @@
     {
       "id": "小象愛出門",
       "name": "小象愛出門",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -55,8 +55,8 @@
     {
       "id": "那對夫妻",
       "name": "那對夫妻",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -68,8 +68,8 @@
     {
       "id": "大蛇丸",
       "name": "大蛇丸",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 9.25,
       "metrics": {
         "in_degree": 33,
@@ -81,8 +81,8 @@
     {
       "id": "Aries艾瑞絲",
       "name": "Aries艾瑞絲",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 8.5,
       "metrics": {
         "in_degree": 30,
@@ -94,8 +94,8 @@
     {
       "id": "陳彥婷",
       "name": "陳彥婷",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 8.25,
       "metrics": {
         "in_degree": 29,
@@ -107,8 +107,8 @@
     {
       "id": "Joeman",
       "name": "Joeman",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 12.25,
       "metrics": {
         "in_degree": 45,
@@ -120,8 +120,8 @@
     {
       "id": "一隻阿圓",
       "name": "一隻阿圓",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 10.25,
       "metrics": {
         "in_degree": 37,
@@ -133,8 +133,8 @@
     {
       "id": "豆漿--Soybean-Milk",
       "name": "豆漿--Soybean-Milk",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.25,
       "metrics": {
         "in_degree": 5,
@@ -146,8 +146,8 @@
     {
       "id": "貓貓蟲-咖波",
       "name": "貓貓蟲-咖波",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -159,8 +159,8 @@
     {
       "id": "人類超有病-Baxuan",
       "name": "人類超有病-Baxuan",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -172,8 +172,8 @@
     {
       "id": "蕾菈-Lyla",
       "name": "蕾菈-Lyla",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 9.5,
       "metrics": {
         "in_degree": 34,
@@ -185,8 +185,8 @@
     {
       "id": "好味小姐",
       "name": "好味小姐",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 4.5,
       "metrics": {
         "in_degree": 14,
@@ -198,8 +198,8 @@
     {
       "id": "小A辣",
       "name": "小A辣",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 4.5,
       "metrics": {
         "in_degree": 14,
@@ -211,8 +211,8 @@
     {
       "id": "泱泱-LYNN",
       "name": "泱泱-LYNN",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.5,
       "metrics": {
         "in_degree": 6,
@@ -224,8 +224,8 @@
     {
       "id": "千千進食中",
       "name": "千千進食中",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 11.75,
       "metrics": {
         "in_degree": 43,
@@ -237,8 +237,8 @@
     {
       "id": "Sandy-珊迪",
       "name": "Sandy-珊迪",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -250,8 +250,8 @@
     {
       "id": "飆悍",
       "name": "飆悍",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -263,8 +263,8 @@
     {
       "id": "Yun-Chou",
       "name": "Yun-Chou",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.0,
       "metrics": {
         "in_degree": 20,
@@ -276,8 +276,8 @@
     {
       "id": "琳妲-林羿禎",
       "name": "琳妲-林羿禎",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 10.0,
       "metrics": {
         "in_degree": 36,
@@ -289,8 +289,8 @@
     {
       "id": "How-Fun-如何爽",
       "name": "How-Fun-如何爽",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 11.25,
       "metrics": {
         "in_degree": 41,
@@ -302,8 +302,8 @@
     {
       "id": "魔術Channel---Davio",
       "name": "魔術Channel---Davio",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -315,8 +315,8 @@
     {
       "id": "HOOK",
       "name": "HOOK",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 9.0,
       "metrics": {
         "in_degree": 32,
@@ -328,7 +328,7 @@
     {
       "id": "lan&Eric",
       "name": "lan&Eric",
-      "group": "主要派系 2",
+      "group": "Walktrap Group 2",
       "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
@@ -341,8 +341,8 @@
     {
       "id": "嘎嫂二伯",
       "name": "嘎嫂二伯",
-      "group": "主要派系 4",
-      "color": "#58E751",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 9.25,
       "metrics": {
         "in_degree": 33,
@@ -354,8 +354,8 @@
     {
       "id": "Peter-Su",
       "name": "Peter-Su",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.0,
       "metrics": {
         "in_degree": 8,
@@ -367,8 +367,8 @@
     {
       "id": "Sandy-&-Mandy",
       "name": "Sandy-&-Mandy",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.5,
       "metrics": {
         "in_degree": 2,
@@ -380,8 +380,8 @@
     {
       "id": "愛莉莎莎-Alisasa",
       "name": "愛莉莎莎-Alisasa",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 9.75,
       "metrics": {
         "in_degree": 35,
@@ -393,8 +393,8 @@
     {
       "id": "彼得爸與蘇珊媽",
       "name": "彼得爸與蘇珊媽",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -406,7 +406,7 @@
     {
       "id": "江老師",
       "name": "江老師",
-      "group": "主要派系 1",
+      "group": "Walktrap Group 1",
       "color": "#45B7D1",
       "val": 4.25,
       "metrics": {
@@ -419,8 +419,8 @@
     {
       "id": "元元",
       "name": "元元",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -432,8 +432,8 @@
     {
       "id": "林進-飛醺卑鄙-fashion-baby",
       "name": "林進-飛醺卑鄙-fashion-baby",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,
@@ -445,8 +445,8 @@
     {
       "id": "我是老爸-我不要當爸!",
       "name": "我是老爸-我不要當爸!",
-      "group": "主要派系 4",
-      "color": "#58E751",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -458,7 +458,7 @@
     {
       "id": "小葵-XiaoKui",
       "name": "小葵-XiaoKui",
-      "group": "主要派系 2",
+      "group": "Walktrap Group 2",
       "color": "#FFA07A",
       "val": 4.25,
       "metrics": {
@@ -471,8 +471,8 @@
     {
       "id": "星期天",
       "name": "星期天",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 4.25,
       "metrics": {
         "in_degree": 13,
@@ -484,8 +484,8 @@
     {
       "id": "蔡桃貴",
       "name": "蔡桃貴",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,
@@ -497,8 +497,8 @@
     {
       "id": "鹿人",
       "name": "鹿人",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 4.25,
       "metrics": {
         "in_degree": 13,
@@ -510,8 +510,8 @@
     {
       "id": "丹妮婊姐",
       "name": "丹妮婊姐",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -523,8 +523,8 @@
     {
       "id": "麻糬爸",
       "name": "麻糬爸",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.25,
       "metrics": {
         "in_degree": 5,
@@ -536,8 +536,8 @@
     {
       "id": "這群人TGOP",
       "name": "這群人TGOP",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.5,
       "metrics": {
         "in_degree": 18,
@@ -549,8 +549,8 @@
     {
       "id": "黃氏兄弟",
       "name": "黃氏兄弟",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -562,8 +562,8 @@
     {
       "id": "KEOKI-BLACK布萊克薛薛",
       "name": "KEOKI-BLACK布萊克薛薛",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 4.25,
       "metrics": {
         "in_degree": 13,
@@ -575,8 +575,8 @@
     {
       "id": "廉傑克曼",
       "name": "廉傑克曼",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 11.0,
       "metrics": {
         "in_degree": 40,
@@ -588,8 +588,8 @@
     {
       "id": "關韶文",
       "name": "關韶文",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,
@@ -601,8 +601,8 @@
     {
       "id": "Andy老師",
       "name": "Andy老師",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 8.25,
       "metrics": {
         "in_degree": 29,
@@ -614,8 +614,8 @@
     {
       "id": "愛里",
       "name": "愛里",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 5.25,
       "metrics": {
         "in_degree": 17,
@@ -627,8 +627,8 @@
     {
       "id": "台灣吧",
       "name": "台灣吧",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.25,
       "metrics": {
         "in_degree": 5,
@@ -640,8 +640,8 @@
     {
       "id": "那些電影教我的事",
       "name": "那些電影教我的事",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.5,
       "metrics": {
         "in_degree": 6,
@@ -653,8 +653,8 @@
     {
       "id": "PopDaily",
       "name": "PopDaily",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 2.5,
       "metrics": {
         "in_degree": 6,
@@ -666,8 +666,8 @@
     {
       "id": "三原慧悟-Sanyuan_JAPAN",
       "name": "三原慧悟-Sanyuan_JAPAN",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -679,8 +679,8 @@
     {
       "id": "Jason-Chen-陳以桐",
       "name": "Jason-Chen-陳以桐",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 5",
+      "color": "#BB8FCE",
       "val": 1.25,
       "metrics": {
         "in_degree": 1,
@@ -692,8 +692,8 @@
     {
       "id": "Onion-man-洋蔥先生與阿文",
       "name": "Onion-man-洋蔥先生與阿文",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 10.0,
       "metrics": {
         "in_degree": 36,
@@ -705,8 +705,8 @@
     {
       "id": "阿啾繪圖同萌",
       "name": "阿啾繪圖同萌",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.5,
       "metrics": {
         "in_degree": 6,
@@ -718,8 +718,8 @@
     {
       "id": "閃電狼Flash-Wolves",
       "name": "閃電狼Flash-Wolves",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 6",
+      "color": "#FF6B6B",
       "val": 1.25,
       "metrics": {
         "in_degree": 1,
@@ -731,8 +731,8 @@
     {
       "id": "白癡公主",
       "name": "白癡公主",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 11.75,
       "metrics": {
         "in_degree": 43,
@@ -744,8 +744,8 @@
     {
       "id": "健人蓋仇",
       "name": "健人蓋仇",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -757,8 +757,8 @@
     {
       "id": "Patrick-派翠克",
       "name": "Patrick-派翠克",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 7.25,
       "metrics": {
         "in_degree": 25,
@@ -770,8 +770,8 @@
     {
       "id": "莊酷炫",
       "name": "莊酷炫",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 12.5,
       "metrics": {
         "in_degree": 46,
@@ -783,8 +783,8 @@
     {
       "id": "Six-Wang",
       "name": "Six-Wang",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.75,
       "metrics": {
         "in_degree": 19,
@@ -796,8 +796,8 @@
     {
       "id": "孫生",
       "name": "孫生",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 8.25,
       "metrics": {
         "in_degree": 29,
@@ -809,8 +809,8 @@
     {
       "id": "超認真少年-I'm-Serious",
       "name": "超認真少年-I'm-Serious",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.5,
       "metrics": {
         "in_degree": 18,
@@ -822,8 +822,8 @@
     {
       "id": "辣媽Shania",
       "name": "辣媽Shania",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.5,
       "metrics": {
         "in_degree": 2,
@@ -835,8 +835,8 @@
     {
       "id": "Lilyflute長笛姐姐",
       "name": "Lilyflute長笛姐姐",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 7",
+      "color": "#5968EE",
       "val": 1.25,
       "metrics": {
         "in_degree": 1,
@@ -848,8 +848,8 @@
     {
       "id": "Bonjour-Louis!-我是路易",
       "name": "Bonjour-Louis!-我是路易",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -861,8 +861,8 @@
     {
       "id": "李恩菲x菲菲",
       "name": "李恩菲x菲菲",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 3.75,
       "metrics": {
         "in_degree": 11,
@@ -874,8 +874,8 @@
     {
       "id": "羚小鹿",
       "name": "羚小鹿",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -887,8 +887,8 @@
     {
       "id": "虎麗笑嗨嗨",
       "name": "虎麗笑嗨嗨",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 4",
+      "color": "#58E751",
       "val": 1.5,
       "metrics": {
         "in_degree": 2,
@@ -900,8 +900,8 @@
     {
       "id": "林淑芬2.0",
       "name": "林淑芬2.0",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.5,
       "metrics": {
         "in_degree": 2,
@@ -913,8 +913,8 @@
     {
       "id": "紫玥桃",
       "name": "紫玥桃",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 8",
+      "color": "#78724F",
       "val": 1.0,
       "metrics": {
         "in_degree": 0,
@@ -926,8 +926,8 @@
     {
       "id": "黃山料",
       "name": "黃山料",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -939,8 +939,8 @@
     {
       "id": "木曜4超玩",
       "name": "木曜4超玩",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 5.0,
       "metrics": {
         "in_degree": 16,
@@ -952,8 +952,8 @@
     {
       "id": "妮妮-Nini",
       "name": "妮妮-Nini",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,
@@ -965,8 +965,8 @@
     {
       "id": "魚乾",
       "name": "魚乾",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 10.0,
       "metrics": {
         "in_degree": 36,
@@ -978,8 +978,8 @@
     {
       "id": "見習網美小吳",
       "name": "見習網美小吳",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 9.5,
       "metrics": {
         "in_degree": 34,
@@ -991,7 +991,7 @@
     {
       "id": "艾爾文",
       "name": "艾爾文",
-      "group": "主要派系 1",
+      "group": "Walktrap Group 1",
       "color": "#45B7D1",
       "val": 1.75,
       "metrics": {
@@ -1004,8 +1004,8 @@
     {
       "id": "志祺七七",
       "name": "志祺七七",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 7.5,
       "metrics": {
         "in_degree": 26,
@@ -1017,8 +1017,8 @@
     {
       "id": "欸你這週要幹嘛",
       "name": "欸你這週要幹嘛",
-      "group": "主要派系 4",
-      "color": "#58E751",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,
@@ -1030,8 +1030,8 @@
     {
       "id": "PEETA葛格",
       "name": "PEETA葛格",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 7.0,
       "metrics": {
         "in_degree": 24,
@@ -1043,8 +1043,8 @@
     {
       "id": "咪妃Julia",
       "name": "咪妃Julia",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 7.5,
       "metrics": {
         "in_degree": 26,
@@ -1056,8 +1056,8 @@
     {
       "id": "呱吉",
       "name": "呱吉",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 8.75,
       "metrics": {
         "in_degree": 31,
@@ -1069,8 +1069,8 @@
     {
       "id": "莊政威-Cliff-Chuang",
       "name": "莊政威-Cliff-Chuang",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -1082,8 +1082,8 @@
     {
       "id": "漢娜在翻譯",
       "name": "漢娜在翻譯",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 9",
+      "color": "#78724F",
       "val": 1.25,
       "metrics": {
         "in_degree": 1,
@@ -1095,8 +1095,8 @@
     {
       "id": "Ru's-Piano-Ru味春捲",
       "name": "Ru's-Piano-Ru味春捲",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -1108,8 +1108,8 @@
     {
       "id": "P.LEAGUE",
       "name": "P.LEAGUE",
-      "group": "主要派系 4",
-      "color": "#58E751",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -1121,8 +1121,8 @@
     {
       "id": "HahaTai-哈哈台",
       "name": "HahaTai-哈哈台",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 4.5,
       "metrics": {
         "in_degree": 14,
@@ -1134,8 +1134,8 @@
     {
       "id": "Ines-Wang",
       "name": "Ines-Wang",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -1147,8 +1147,8 @@
     {
       "id": "豪吃來吃",
       "name": "豪吃來吃",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 4",
+      "color": "#58E751",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -1160,8 +1160,8 @@
     {
       "id": "依梨",
       "name": "依梨",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.5,
       "metrics": {
         "in_degree": 2,
@@ -1173,8 +1173,8 @@
     {
       "id": "周小葳",
       "name": "周小葳",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 1.75,
       "metrics": {
         "in_degree": 3,
@@ -1186,8 +1186,8 @@
     {
       "id": "Irene-林艾融",
       "name": "Irene-林艾融",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 3.5,
       "metrics": {
         "in_degree": 10,
@@ -1199,8 +1199,8 @@
     {
       "id": "BBpPro-Lin-Ching-Chieh-林敬傑",
       "name": "BBpPro-Lin-Ching-Chieh-林敬傑",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.75,
       "metrics": {
         "in_degree": 11,
@@ -1212,8 +1212,8 @@
     {
       "id": "Emma艾瑪",
       "name": "Emma艾瑪",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 3",
+      "color": "#F7DC6F",
       "val": 3.25,
       "metrics": {
         "in_degree": 9,
@@ -1225,8 +1225,8 @@
     {
       "id": "電瀨少女-女孩的科技日常",
       "name": "電瀨少女-女孩的科技日常",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 3.0,
       "metrics": {
         "in_degree": 8,
@@ -1238,8 +1238,8 @@
     {
       "id": "喬喬兒Sylvia",
       "name": "喬喬兒Sylvia",
-      "group": "主要派系 1",
-      "color": "#45B7D1",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 2.25,
       "metrics": {
         "in_degree": 5,
@@ -1251,8 +1251,8 @@
     {
       "id": "柴犬Nana和阿楞的一天",
       "name": "柴犬Nana和阿楞的一天",
-      "group": "主要派系 2",
-      "color": "#FFA07A",
+      "group": "Walktrap Group 1",
+      "color": "#45B7D1",
       "val": 2.5,
       "metrics": {
         "in_degree": 6,
@@ -1264,8 +1264,8 @@
     {
       "id": "瑀熙-Yuci",
       "name": "瑀熙-Yuci",
-      "group": "主要派系 3",
-      "color": "#F7DC6F",
+      "group": "Walktrap Group 2",
+      "color": "#FFA07A",
       "val": 6.5,
       "metrics": {
         "in_degree": 22,

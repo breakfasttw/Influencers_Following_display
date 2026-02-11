@@ -29,6 +29,11 @@ body {
     border-bottom: 2px solid #60a5fa;
     color: #60a5fa;
 }
+
+/* ==================================
+    社交網路 Modal
+================================== */
+
 .chart-container {
     height: calc(100vh - 160px);
     width: 100%;
@@ -112,4 +117,66 @@ body {
 #algo-selector option {
     background-color: #1e293b;
     color: #cbd5e1;
+}
+
+/* ==================================
+    表格 Modal
+================================== */
+
+/* [新增] 指標表格排序樣式 */
+.sort-icon {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 4px;
+    vertical-align: middle;
+    opacity: 0.3;
+}
+.sort-active {
+    opacity: 1;
+    color: #60a5fa;
+}
+.metrics-table-container {
+    overflow-x: auto;
+    /* 響應式邊界：小 16px, 中 40px, 大 80px */
+    margin-left: 16px;
+    margin-right: 16px;
+}
+@media (min-width: 768px) {
+    .metrics-table-container {
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+}
+@media (min-width: 1024px) {
+    .metrics-table-container {
+        margin-left: 160x;
+        margin-right: 160px;
+    }
+}
+
+/* Zebra 條紋與 Hover */
+.metrics-table tr:nth-child(even) {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+.metrics-table tr:hover {
+    background-color: rgba(51, 65, 85, 0.8);
+    transition: background 0.2s;
+}
+
+/* [新增] 專門給報表標籤頁使用的捲動設定 */
+#tab-matrix {
+    z-index: 10;
+    position: relative;
+    background: #0f172a; /* 確保背景不透明 */
+}
+
+/* 確保表格在容器內可以正常顯示 */
+#heatmap-viz table {
+    min-width: 600px; /* 避免在小螢幕過度擠壓 */
+}
+
+/* 修正原本 .chart-container 可能造成的干擾 */
+#tab-matrix.hidden {
+    display: none !important;
 }

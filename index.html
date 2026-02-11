@@ -11,6 +11,7 @@
         <script src="https://unpkg.com/force-graph"></script>
         <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
         <link rel="icon" href="./pic/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" sizes="180x180" href="./pic/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,10 +43,10 @@
                     <button
                         onclick="switchTab('heatmap')"
                         id="btn-heatmap"
-                        class="py-2 px-1 text-lg font-medium text-slate-400 transition-all hidden"
+                        class="py-2 px-1 text-lg font-medium text-slate-400 transition-all"
                     >
                         📊
-                        <span class="mobile-disable text-sm">聚類矩陣</span>
+                        <span class="mobile-disable text-sm">報表</span>
                     </button>
                 </nav>
             </div>
@@ -75,6 +76,7 @@
 
         <main class="flex-grow relative p-4">
             <div
+                id="switch-algorithm"
                 class="absolute z-50 top-4 right-4 flex items-center gap-2 bg-slate-700/50 px-3 py-1 rounded-lg border border-slate-600"
             >
                 <label for="algo-selector" class="text-xs text-slate-400"
@@ -115,9 +117,7 @@
                         <button
                             onclick="toggleLegend()"
                             class="text-slate-400 hover:text-white"
-                        >
-                            ✕
-                        </button>
+                        ></button>
                     </div>
                     <div id="legend-content" class="space-y-4">
                         <p class="text-slate-500 text-sm">載入資料中...</p>
@@ -150,23 +150,22 @@
                 </div>
             </div>
 
-            <div id="tab-heatmap" class="chart-container hidden flex flex-col">
-                <div class="flex justify-end mb-2 space-x-2">
-                    <span class="text-xs text-slate-400 self-center"
-                        >💡 技巧：框選矩陣局部區域可放大查看姓名</span
-                    >
-                    <button
-                        onclick="toggleDetailedLabels()"
-                        id="btn-toggle-labels"
-                        class="bg-blue-600/80 hover:bg-blue-600 px-3 py-1 rounded text-xs text-white transition-colors"
-                    >
-                        🔍 顯示所有姓名 (精細模式)
-                    </button>
+            <div
+                id="tab-matrix"
+                class="hidden pt-6 pb-20 overflow-y-auto"
+                style="height: calc(100vh - 100px)"
+            >
+                <div class="metrics-table-container px-4">
+                    <div
+                        id="heatmap-viz"
+                        class="w-full bg-slate-800/30 rounded-xl border border-slate-700 mb-10"
+                    ></div>
+
+                    <div
+                        id="table-container"
+                        class="w-full bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden shadow-xl"
+                    ></div>
                 </div>
-                <div
-                    id="heatmap-viz"
-                    class="w-full flex-grow bg-slate-800 rounded-xl overflow-hidden shadow-2xl"
-                ></div>
             </div>
         </main>
 

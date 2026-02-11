@@ -7,6 +7,21 @@ let matrixData = null;
 let isDetailedMode = false;
 let communityData = [];
 
+// [新增] 報表相關變數
+let metricsData = [];
+let currentSort = { key: "Original_Rank", asc: true };
+
+// [新增] 欄位顯示名稱對照表 (你之後可以在這裡修改顯示名稱)
+const COLUMN_NAMES = {
+    Original_Rank: "排名",
+    Person_Name: "網紅名稱",
+    "In_Degree (被追蹤數)": "In_Degree",
+    "Out_Degree (主動追蹤數)": "Out_Degree",
+    "Mutual_Follow (互粉數)": "互粉數",
+    Network_Influence_Score: "被追蹤率",
+    distinct_following: "追蹤人數",
+};
+
 // [新增] 演算法設定表
 const ALGO_CONFIG = {
     greedy: {
@@ -66,9 +81,10 @@ async function switchAlgorithm(algoKey) {
         const nodesPath = `${config.path}nodes_edges${config.suffix}.json?v=${timestamp}`;
         const csvPath = `${config.path}community_grouping_report_final${config.suffix}.csv?v=${timestamp}`;
         const matrixPath = `./Output/matrix.json?v=${timestamp}`; // 假設矩陣共用，若不同也要改路徑
+        const metricsPath = `./Output/network_metrics_report.csv?v=${timestamp}`;
 
         // 嘗試獲取資料
-        const [nodesRes, csvRes, matrixRes] = await Promise.all([
+        const [nodesRes, csvRes, matrixRes, metricsRes] = await Promise.all([
             fetch(nodesPath).then((r) =>
                 r.ok
                     ? r.json()
@@ -82,12 +98,17 @@ async function switchAlgorithm(algoKey) {
             fetch(matrixPath).then((r) =>
                 r.ok ? r.json() : Promise.reject("Matrix file not found"),
             ),
+            fetch(metricsPath).then((r) =>
+                r.ok ? r.text() : Promise.reject("Metrics error"),
+            ), // [新增]
         ]);
 
         // 資料獲取成功後更新全域變數
         gData = nodesRes;
         matrixData = matrixRes;
         parseCommunityCSV(csvRes);
+        parseMetricsCSV(metricsRes); // [新增]
+        renderMetricsTable(); // [新增]
 
         // 重新建立鄰居索引 (Neighbor Index)
         gData.links.forEach((link) => {
@@ -115,7 +136,6 @@ async function switchAlgorithm(algoKey) {
         } else {
             // 第一次載入，初始化圖表
             initNetwork();
-            initHeatmap();
         }
 
         // 重新渲染圖例
@@ -253,7 +273,8 @@ function initNetwork() {
                 <hr style="border-color: #334155; margin: 4px 0;"/>
                 被追蹤數：<span style="color: #f8fafc">${node.metrics.in_degree}</span><br/>
                 追蹤他人：<span style="color: #f8fafc">${node.metrics.out_degree}</span><br/>
-                雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span>
+                雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span><br/>
+                總追蹤他人：<span style="color: #f8fafc">${node.metrics.distinct_following}</span>
             </div>
         `,
         )
@@ -395,19 +416,6 @@ function focusNode(node) {
     updateHighlightSets();
 }
 
-// function focusNode(node) {
-//     if (!graphInstance) return;
-
-//     // Zoom 到節點
-//     const distance = 200;
-//     const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z || 0);
-
-//     graphInstance.centerAt(node.x, node.y, 1000);
-//     graphInstance.zoom(4, 2000);
-
-//     searchNode = node; // 設定為搜尋目標以觸發高亮
-// }
-
 function handleSearch(keyword) {
     // 邏輯：如果有傳 keyword 進來就用它，沒有就去抓 ID 為 'influencer-search' 的元素值
     const inputElement = document.getElementById("influencer-search");
@@ -430,370 +438,7 @@ function handleSearch(keyword) {
     } else {
         alert(`找不到與「${searchVal}」相關的網紅`);
     }
-    // if (!keyword) return;
-    // // 模糊搜尋
-    // const target = gData.nodes.find((n) =>
-    //     n.name.toLowerCase().includes(keyword.toLowerCase()),
-    // );
-
-    // if (target) {
-    //     focusNode(target);
-    // } else {
-    //     alert("找不到相關網紅");
-    // }
 }
-
-// let graphInstance = null;
-// let gData = { nodes: [], links: [] };
-// let matrixData = null;
-// let isDetailedMode = false;
-
-// // 儲存分群報表資料
-// let communityData = [];
-
-// // [新增] 演算法設定表
-// const ALGO_CONFIG = {
-//     greedy: {
-//         name: "Greedy",
-//         path: "./Output/",
-//         suffix: "",
-//     },
-//     louvain: {
-//         name: "Louvain",
-//         path: "./Output/Louvain/",
-//         suffix: "_lv",
-//     },
-//     walktrap: {
-//         name: "WalkTrap",
-//         path: "./Output/WalkTrap/",
-//         suffix: "_wt",
-//     },
-// };
-
-// // [修改] 初始化改為載入 Louvain
-// document.addEventListener("DOMContentLoaded", () => {
-//     switchAlgorithm("louvain");
-// });
-
-// /**
-//  * [新增] 切換演算法的核心邏輯
-//  */
-// async function switchAlgorithm(algoKey) {
-//     const config = ALGO_CONFIG[algoKey];
-//     const legendContent = document.getElementById("legend-content");
-//     const legendTitle = document.getElementById("legend-title");
-
-//     // [新增] 安全檢查：如果找不到標題元素，就不要執行 innerText 賦值
-//     if (legendTitle) {
-//         legendTitle.innerText = `分群報表圖例 (${config.name})`;
-//     }
-
-//     // 更新標題
-//     legendTitle.innerText = `分群報表圖例 (${config.name})`;
-//     legendContent.innerHTML = `<p class="text-slate-500 text-sm text-center py-10">正在切換至 ${config.name} 演算法...</p>`;
-
-//     try {
-//         // 構建檔案路徑
-//         const nodesPath = `${config.path}nodes_edges${config.suffix}.json`;
-//         const csvPath = `${config.path}community_grouping_report_final${config.suffix}.csv`;
-
-//         // 嘗試獲取資料
-//         const [nodesRes, csvRes] = await Promise.all([
-//             fetch(nodesPath).then((r) =>
-//                 r.ok ? r.json() : Promise.reject("Nodes not found"),
-//             ),
-//             fetch(csvPath).then((r) =>
-//                 r.ok ? r.text() : Promise.reject("CSV not found"),
-//             ),
-//         ]);
-
-//         // 資料獲取成功後更新全局變數
-//         gData = nodesRes;
-//         parseCommunityCSV(csvRes);
-
-//         // 重新處理連線索引 (這部分保留你原有的 logic)
-//         gData.links.forEach((link) => {
-//             const a = gData.nodes.find((n) => n.id === link.source);
-//             const b = gData.nodes.find((n) => n.id === link.target);
-//             if (a && b) {
-//                 // 加個保險以免 nodes 跟 links 不對應
-//                 !a.neighbors && (a.neighbors = []);
-//                 !b.neighbors && (b.neighbors = []);
-//                 a.neighbors.push(b);
-//                 b.neighbors.push(a);
-//                 !a.links && (a.links = []);
-//                 !b.links && (b.links = []);
-//                 a.links.push(link);
-//                 b.links.push(link);
-//             }
-//         });
-
-//         // 刷新 UI
-//         if (graphInstance) {
-//             graphInstance.graphData(gData); // 直接更新數據而非重新 init 以維持效能
-//         } else {
-//             initNetwork();
-//         }
-//         renderLegend();
-//     } catch (error) {
-//         console.error(`Error loading ${algoKey}:`, error);
-//         // [新增] 若資料缺失，顯示提示訊息
-//         legendContent.innerHTML = `
-//             <div class="text-center py-10">
-//                 <p class="text-amber-500 text-sm mb-2">⚠️ 尚未有分群結果</p>
-//                 <p class="text-slate-600 text-xs">請確認 ${config.path} 目錄下的資料是否已產出</p>
-//             </div>
-//         `;
-//         // 如果原本有圖，可以選擇清除或保留舊圖，這裡建議清除以防誤導
-//         if (graphInstance) graphInstance.graphData({ nodes: [], links: [] });
-//     }
-// }
-
-// const highlightNodes = new Set();
-// const highlightLinks = new Set();
-// let searchNode = null;
-
-// // 初始化
-// Promise.all([
-//     fetch("./Output/nodes_edges.json").then((res) => res.json()),
-//     fetch("./Output/matrix.json").then((res) => res.json()),
-//     // [修正] 確保這裡抓取的是 text 格式
-//     fetch("./Output/community_grouping_report_final.csv?v=" + Date.now()).then(
-//         (res) => res.text(),
-//     ),
-// ]).then(([nodesEdges, matrix, csvResponseText]) => {
-//     gData = nodesEdges;
-//     matrixData = matrix;
-
-//     // 解析 CSV 並渲染圖例
-//     parseCommunityCSV(csvResponseText);
-
-//     // 建立鄰居索引，以利互動式的高亮（Highlight）
-//     gData.links.forEach((link) => {
-//         // 將鄰居節點與相關連線存入節點物件中
-//         const a = gData.nodes.find(
-//             (n) => n.id === (link.source.id || link.source),
-//         );
-//         const b = gData.nodes.find(
-//             (n) => n.id === (link.target.id || link.target),
-//         );
-//         if (a && b) {
-//             !a.neighbors && (a.neighbors = []);
-//             !b.neighbors && (b.neighbors = []);
-//             a.neighbors.push(b);
-//             b.neighbors.push(a);
-//             !a.links && (a.links = []);
-//             !b.links && (b.links = []);
-//             a.links.push(link);
-//             b.links.push(link);
-//         }
-//     });
-//     initNetwork();
-//     initHeatmap();
-//     renderLegend(); //  初始渲染圖例
-// });
-
-// // [新增] CSV 解析函數 (針對格式：派系名稱,成員總數,核心領袖,所有成員)
-// function parseCommunityCSV(text) {
-//     if (!text) return;
-//     const lines = text.split("\n").filter((line) => line.trim() !== "");
-//     const headers = lines[0].split(",");
-
-//     communityData = lines.slice(1).map((line) => {
-//         // 考慮到「所有成員」欄位內含 | 號，簡單用 split(",") 即可，因為成員列表是最後一欄
-//         const parts = line.split(",");
-//         return {
-//             name: parts[0],
-//             count: parts[1],
-//             leader: parts[2],
-//             members: parts[3] ? parts[3].split("|").map((m) => m.trim()) : [],
-//         };
-//     });
-// }
-
-// // [新增] 渲染圖例面板
-// function renderLegend() {
-//     const container = document.getElementById("legend-content");
-//     if (!communityData.length) return;
-
-//     let html = `<table class="legend-table text-sm text-left">`;
-
-//     communityData.forEach((item, index) => {
-//         // 直接使用 CSV 的派系名稱與 JSON 節點的 group 欄位進行比對
-//         // item.name 來自 community_grouping_report_final.csv (例如 "主要派系 1")
-//         // n.group 來自 nodes_edges.json (也是 "主要派系 1")
-//         const representativeNode = gData.nodes.find(
-//             (n) => n.group === item.name,
-//         );
-
-//         // 抓取該節點定義的顏色，若無對應則給予深灰色預設值
-//         const color = representativeNode ? representativeNode.color : "#475569";
-
-//         html += `
-//             <tr class="legend-row-header">
-//                 <td class="p-2 w-4" style="background-color: ${color}; border-radius: 8px 0 0 8px;"></td>
-//                 <td class="p-2 ">${item.name}</td>
-//                 <td class="p-2 text-xs">
-//                     <span class="leader-link" onclick="focusNodeByName('${item.leader}')"> 👑 ${item.leader}</span>
-//                 </td>
-//                 <td class="p-2 text-slate-400">${item.count}人</td>
-//                 <td class="p-2 text-right">
-//                     <button onclick="toggleAccordion(${index})" class="bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-[11px]">清單</button>
-//                 </td>
-//             </tr>
-//             <tr>
-//                 <td colspan="5">
-//                     <div id="accordion-${index}" class="accordion-content text-xs text-slate-400 leading-relaxed">
-//                         ${item.members.join("、")}
-//                     </div>
-//                 </td>
-//             </tr>
-//         `;
-//     });
-
-//     html += `</table>`;
-//     container.innerHTML = html;
-// }
-
-// // [新增] 切換圖例面板開關
-// function toggleLegend() {
-//     const panel = document.getElementById("legend-panel");
-//     const openBtn = document.getElementById("btn-legend-open");
-
-//     // 1. 切換面板顯示狀態
-//     panel.classList.toggle("open");
-
-//     // 2. 根據面板狀態決定按鈕是否消失
-//     // 如果面板現在是開啟的 (含有 'open')，就讓按鈕消失 (加入 'hidden')
-//     if (panel.classList.contains("open")) {
-//         openBtn.classList.add("hidden");
-//     } else {
-//         openBtn.classList.remove("hidden");
-//     }
-// }
-
-// // [新增] 手風琴開闔邏輯
-// function toggleAccordion(index) {
-//     const content = document.getElementById(`accordion-${index}`);
-//     content.classList.toggle("expanded");
-// }
-
-// // [新增] 透過名稱搜尋並聚焦節點 (供圖例點擊使用)
-// function focusNodeByName(name) {
-//     const node = gData.nodes.find((n) => n.name === name);
-//     if (node) {
-//         focusNode(node);
-//         // 如果在手機版，點擊後自動收合圖例以便觀看
-//         if (window.innerWidth < 1024) toggleLegend();
-//     } else {
-//         alert("未找到該網紅節點");
-//     }
-// }
-
-// function initNetwork() {
-//     const elem = document.getElementById("network-viz");
-//     graphInstance = ForceGraph()(elem)
-//         .graphData(gData)
-//         .nodeId("id")
-//         .width(elem.clientWidth)
-//         .height(elem.clientHeight)
-
-//         // --- 加回數據顯示 (Hover Tooltip) ---
-//         .nodeLabel(
-//             (node) => `
-//             <div style="color: #60a5fa; font-weight: bold; margin-bottom: 4px;">${node.name}</div>
-//             <div style="color: #a2abb8; font-size: 12px;">
-//                 派系：${node.group}<br/>
-//                 <hr style="border-color: #334155; margin: 4px 0;"/>
-//                 被追蹤數：<span style="color: #f8fafc">${node.metrics.in_degree}</span><br/>
-//                 追蹤他人：<span style="color: #f8fafc">${node.metrics.out_degree}</span><br/>
-//                 雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span>
-//             </div>
-//         `,
-//         )
-
-//         // 用來區分「雙向互粉」與單向追蹤，讓視覺上不會所有線都疊在一起
-//         .linkCurvature((l) => (l.type === "mutual" ? 0.3 : 0))
-//         .linkDirectionalArrowLength(3) // 利用 linkDirectionalArrowLength 顯示追蹤的方向性。
-//         .nodeColor((node) =>
-//             highlightNodes.has(node) || node === searchNode
-//                 ? "#fbbf24"
-//                 : node.color,
-//         )
-//         .linkColor((link) =>
-//             highlightLinks.has(link) ? "#60a5fa" : "rgba(148, 163, 184, 0.1)",
-//         )
-//         .linkWidth((link) => (highlightLinks.has(link) ? 2.5 : 0.5))
-//         .onNodeDrag((node) => {
-//             highlightNodes.clear();
-//             highlightLinks.clear();
-//             if (node) {
-//                 highlightNodes.add(node);
-//                 node.neighbors &&
-//                     node.neighbors.forEach((neighbor) =>
-//                         highlightNodes.add(neighbor),
-//                     );
-//                 node.links &&
-//                     node.links.forEach((link) => highlightLinks.add(link));
-//             }
-//             searchNode = node;
-//         })
-//         .onNodeDragEnd((node) => {
-//             node.fx = node.x;
-//             node.fy = node.y;
-//         })
-//         .nodeCanvasObject((node, ctx, globalScale) => {
-//             // 自定義節點外觀
-//             const isFocus = node === searchNode || highlightNodes.has(node);
-//             const label = node.name;
-//             const radius = Math.sqrt(node.val) * 2; // 節點半徑由 node.val 決定
-
-//             // 透過 Set 儲存目前選中的節點與連線，動態更新 Canvas 的 shadowBlur 產生發光效果
-//             if (isFocus) {
-//                 ctx.shadowColor = node === searchNode ? "#fbbf24" : "#60a5fa";
-//                 ctx.shadowBlur = 15;
-//                 ctx.fillStyle = node === searchNode ? "#fbbf24" : "#60a5fa";
-//                 ctx.beginPath();
-//                 ctx.arc(node.x, node.y, radius + 1, 0, 2 * Math.PI);
-//                 ctx.fill();
-//                 ctx.shadowBlur = 0;
-//             }
-
-//             ctx.fillStyle = node.color;
-//             ctx.beginPath();
-//             ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-//             ctx.fill();
-
-//             if (globalScale > 2 || isFocus) {
-//                 const fontSize = isFocus ? 16 / globalScale : 12 / globalScale;
-//                 ctx.font = `${isFocus ? "bold " : ""}${fontSize}px Iansui`;
-//                 ctx.textAlign = "center";
-//                 ctx.textBaseline = "middle";
-//                 ctx.fillStyle = isFocus ? "#e062e2" : "#c4c6c6";
-//                 ctx.fillText(label, node.x, node.y + radius + fontSize + 2);
-//             }
-//         })
-//         .onNodeClick((node) => focusNode(node));
-// }
-
-// // 關鍵字搜尋
-// function handleSearch() {
-//     const input = document.getElementById("influencer-search").value.trim();
-//     const node = gData.nodes.find((n) => n.name.includes(input));
-//     if (node) focusNode(node);
-//     else alert("未找到網紅");
-// }
-
-// function focusNode(node) {
-//     searchNode = node;
-//     highlightNodes.clear();
-//     highlightLinks.clear();
-//     highlightNodes.add(node);
-//     node.neighbors && node.neighbors.forEach((n) => highlightNodes.add(n));
-//     node.links && node.links.forEach((l) => highlightLinks.add(l));
-//     graphInstance.centerAt(node.x, node.y, 1000);
-//     graphInstance.zoom(3, 1000);
-// }
 
 function unlockNodes() {
     gData.nodes.forEach((n) => {
@@ -814,7 +459,7 @@ function switchTab(tab) {
         .getElementById("tab-network")
         .classList.toggle("hidden", tab !== "network");
     document
-        .getElementById("tab-heatmap")
+        .getElementById("tab-matrix")
         .classList.toggle("hidden", tab !== "heatmap");
     document
         .getElementById("btn-network")
@@ -823,59 +468,144 @@ function switchTab(tab) {
         .getElementById("btn-heatmap")
         .classList.toggle("tab-active", tab === "heatmap");
     if (tab === "heatmap") Plotly.Plots.resize("heatmap-viz");
+    document
+        .getElementById("btn-legend-open")
+        .classList.toggle("hidden", tab === "heatmap");
+    document
+        .getElementById("switch-algorithm")
+        .classList.toggle("hidden", tab === "heatmap");
+    document
+        .getElementById("legend-panel")
+        .classList.toggle("hidden", tab === "heatmap");
+    document
+        .getElementById("search-section")
+        .classList.toggle("hidden", tab === "heatmap");
 }
 
-function initHeatmap() {
-    const trace = {
-        z: matrixData.z,
-        x: matrixData.x,
-        y: matrixData.y,
-        type: "heatmap",
-        colorscale: [
-            [0, "#0f172a"],
-            [0.5, "#3b82f6"],
-            [1, "#93c5fd"],
-        ],
-        hovertemplate:
-            "追蹤者: %{y}<br>被追蹤者: %{x}<br>強度: %{z}<extra></extra>",
-    };
+/**
+ * [新增] 解析指標報表 CSV
+ */
+function parseMetricsCSV(text) {
+    const lines = text.split("\n").filter((l) => l.trim() !== "");
+    const headers = lines[0].split(",");
 
-    const layout = {
-        paper_bgcolor: "rgba(0,0,0,0)",
-        plot_bgcolor: "rgba(0,0,0,0)",
-        margin: { l: 150, r: 50, b: 150, t: 20 },
-        xaxis: {
-            tickangle: 45,
-            color: "#94a3b8",
-            automargin: true,
-            // 根據模式決定是否強制顯示所有 tick
-            tickmode: isDetailedMode ? "linear" : "auto",
-            dtick: isDetailedMode ? 1 : undefined,
-        },
-        yaxis: {
-            autorange: "reversed",
-            color: "#94a3b8",
-            scaleanchor: "x",
-            automargin: true,
-            tickmode: isDetailedMode ? "linear" : "auto",
-            dtick: isDetailedMode ? 1 : undefined,
-        },
-    };
-
-    Plotly.newPlot("heatmap-viz", [trace], layout, {
-        responsive: true,
-        scrollZoom: true,
+    metricsData = lines.slice(1).map((line) => {
+        const values = line.split(",");
+        let obj = {};
+        headers.forEach((header, i) => {
+            const val = values[i].trim();
+            // 自動轉換數字型態以便排序
+            obj[header.trim()] = isNaN(val) ? val : parseFloat(val);
+        });
+        return obj;
     });
 }
 
-// 切換精細模式 (顯示所有姓名)
-function toggleDetailedLabels() {
-    isDetailedMode = !isDetailedMode;
-    const btn = document.getElementById("btn-toggle-labels");
-    btn.innerText = isDetailedMode
-        ? "📉 恢復自動縮放 (一般模式)"
-        : "🔍 顯示所有姓名 (精細模式)";
-    btn.classList.toggle("bg-blue-600/80");
-    btn.classList.toggle("bg-green-600/80");
-    initHeatmap(); // 重新渲染以更新 axis 設定
+/**
+ * [新增] 處理排序點擊
+ */
+function handleTableSort(key) {
+    if (currentSort.key === key) {
+        currentSort.asc = !currentSort.asc;
+    } else {
+        currentSort.key = key;
+        currentSort.asc = true;
+    }
+    renderMetricsTable();
+}
+
+/**
+ * [新增] 渲染報表表格
+ */
+function renderMetricsTable() {
+    const container = document.getElementById("heatmap-viz");
+    if (!metricsData.length) return;
+
+    // 排序邏輯
+    const sortedData = [...metricsData].sort((a, b) => {
+        let v1 = a[currentSort.key];
+        let v2 = b[currentSort.key];
+
+        if (typeof v1 === "string") {
+            return currentSort.asc
+                ? v1.localeCompare(v2)
+                : v2.localeCompare(v1);
+        } else {
+            return currentSort.asc ? v1 - v2 : v2 - v1;
+        }
+    });
+
+    const headers = Object.keys(COLUMN_NAMES);
+
+    // 2. 構建 HTML
+    let html = `
+        <table class="metrics-table w-full text-left text-sm text-slate-300">
+            <thead class="bg-slate-700/50 text-slate-100 sticky top-0">
+                <tr>
+                    ${headers
+                        .map(
+                            (h) => `
+                        <th class="p-4 cursor-pointer hover:bg-slate-600 transition-colors" onclick="handleTableSort('${h}')">
+                            <div class="flex items-center ${typeof metricsData[0][h] === "number" ? "justify-end" : ""}">
+                                ${COLUMN_NAMES[h]}
+                                <span class="sort-icon ${currentSort.key === h ? "sort-active" : ""}">
+                                    ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
+                                </span>
+                            </div>
+                        </th>
+                    `,
+                        )
+                        .join("")}
+                </tr>
+            </thead>
+            <tbody>
+                ${sortedData
+                    .map(
+                        (row) => `
+                    <tr class="border-b border-slate-700/50">
+                        ${headers
+                            .map((h) => {
+                                let displayVal = row[h];
+                                let alignClass = ""; // 預設靠左
+
+                                // [新增邏輯] 判斷是否為數字型別
+                                if (
+                                    typeof displayVal === "number" &&
+                                    !isNaN(displayVal)
+                                ) {
+                                    alignClass = "text-right"; // 1. 數字欄位靠右對齊
+
+                                    // 2. 判斷是否為浮點數欄位
+                                    // 邏輯：檢查該欄位值是否包含小數點 (非整數)
+                                    if (displayVal % 1 !== 0) {
+                                        // 浮點數：四捨五入並補足兩位小數點，再加上千分位
+                                        displayVal = displayVal.toLocaleString(
+                                            "en-US",
+                                            {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2,
+                                            },
+                                        );
+                                    } else {
+                                        // 整數：維持整數並加上千分位
+                                        displayVal =
+                                            displayVal.toLocaleString("en-US");
+                                    }
+                                }
+
+                                return `
+                                <td class="p-4 ${alignClass} ${h === "Person_Name" ? "text-blue-400 font-medium text-left" : ""}">
+                                    ${displayVal}
+                                </td>
+                            `;
+                            })
+                            .join("")}
+                    </tr>
+                `,
+                    )
+                    .join("")}
+            </tbody>
+        </table>
+    `;
+    container.innerHTML = html;
 }
