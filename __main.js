@@ -11,6 +11,20 @@ let communityData = [];
 let metricsData = [];
 let currentSort = { key: "Original_Rank", asc: true };
 
+// [新增] 演算法設定表
+const ALGO_CONFIG = {
+    greedy: { name: "Greedy", path: "./Output/", suffix: "_gd" }, // 配合更名
+    louvain: { name: "Louvain", path: "./Output/Louvain/", suffix: "_lv" },
+    walktrap: { name: "WalkTrap", path: "./Output/WalkTrap/", suffix: "_wt" },
+};
+
+// [新增] 儲存所有演算法的節點對照表
+let allAlgosNodes = {
+    gd: [],
+    lv: [],
+    wt: [],
+};
+
 // [新增] 欄位顯示名稱對照表 (你之後可以在這裡修改顯示名稱)
 const COLUMN_NAMES = {
     Original_Rank: "排名",
@@ -19,26 +33,11 @@ const COLUMN_NAMES = {
     "Out_Degree (主動追蹤數)": "Out_Degree",
     "Mutual_Follow (互粉數)": "互粉數",
     Network_Influence_Score: "被追蹤率",
+    Betweenness_Centrality: "中介度",
     distinct_following: "追蹤人數",
-};
-
-// [新增] 演算法設定表
-const ALGO_CONFIG = {
-    greedy: {
-        name: "Greedy",
-        path: "./Output/",
-        suffix: "",
-    },
-    louvain: {
-        name: "Louvain",
-        path: "./Output/Louvain/",
-        suffix: "_lv",
-    },
-    walktrap: {
-        name: "WalkTrap",
-        path: "./Output/WalkTrap/",
-        suffix: "_wt",
-    },
+    group_gd: "Greedy",
+    group_lv: "Louvain",
+    group_wt: "Walktrap",
 };
 
 const highlightNodes = new Set();
@@ -76,70 +75,118 @@ async function switchAlgorithm(algoKey) {
 
     try {
         // 構建檔案路徑
-        // 加入 ?v=Date.now() 防止快取，確保讀到最新檔案
+        // [修改] 一口氣抓取所有需要的檔案
         const timestamp = Date.now();
-        const nodesPath = `${config.path}nodes_edges${config.suffix}.json?v=${timestamp}`;
-        const csvPath = `${config.path}community_grouping_report_final${config.suffix}.csv?v=${timestamp}`;
-        const matrixPath = `./Output/matrix.json?v=${timestamp}`; // 假設矩陣共用，若不同也要改路徑
-        const metricsPath = `./Output/network_metrics_report.csv?v=${timestamp}`;
 
-        // 嘗試獲取資料
-        const [nodesRes, csvRes, matrixRes, metricsRes] = await Promise.all([
-            fetch(nodesPath).then((r) =>
-                r.ok
-                    ? r.json()
-                    : Promise.reject(`Nodes file not found: ${nodesPath}`),
-            ),
-            fetch(csvPath).then((r) =>
-                r.ok
-                    ? r.text()
-                    : Promise.reject(`CSV file not found: ${csvPath}`),
-            ),
-            fetch(matrixPath).then((r) =>
-                r.ok ? r.json() : Promise.reject("Matrix file not found"),
-            ),
-            fetch(metricsPath).then((r) =>
-                r.ok ? r.text() : Promise.reject("Metrics error"),
-            ), // [新增]
-        ]);
+        const [nodesGD, nodesLV, nodesWT, csvRes, metricsRes] =
+            await Promise.all([
+                fetch(`./Output/nodes_edges_gd.json?v=${timestamp}`).then((r) =>
+                    r.json(),
+                ),
+                fetch(
+                    `./Output/Louvain/nodes_edges_lv.json?v=${timestamp}`,
+                ).then((r) => r.json()),
+                fetch(
+                    `./Output/WalkTrap/nodes_edges_wt.json?v=${timestamp}`,
+                ).then((r) => (r.ok ? r.json() : { nodes: [] })), // 考慮 Walktrap 可能尚未產出
+                fetch(
+                    `${config.path}community_grouping_report_final${config.suffix}.csv?v=${timestamp}`,
+                ).then((r) => r.text()),
+                fetch(
+                    `./Output/network_metrics_report.csv?v=${timestamp}`,
+                ).then((r) => r.text()),
+                fetch(`./Output/network_summary.json?v=${timestamp}`).then(
+                    (r) => r.text(),
+                ),
+            ]);
 
-        // 資料獲取成功後更新全域變數
-        gData = nodesRes;
-        matrixData = matrixRes;
+        // 儲存對照表
+        allAlgosNodes.gd = nodesGD.nodes;
+        allAlgosNodes.lv = nodesLV.nodes;
+        allAlgosNodes.wt = nodesWT.nodes;
+
+        // 設定當前社交網路圖資料
+        if (algoKey === "greedy") gData = nodesGD;
+        else if (algoKey === "louvain") gData = nodesLV;
+        else gData = nodesWT;
+
+        // 解析報表 (此處會進行資料合併)
         parseCommunityCSV(csvRes);
-        parseMetricsCSV(metricsRes); // [新增]
-        renderMetricsTable(); // [新增]
-
-        // 重新建立鄰居索引 (Neighbor Index)
-        gData.links.forEach((link) => {
-            const a = gData.nodes.find((n) => n.id === link.source);
-            const b = gData.nodes.find((n) => n.id === link.target);
-
-            // 防呆：確保節點存在
-            if (a && b) {
-                !a.neighbors && (a.neighbors = []);
-                !b.neighbors && (b.neighbors = []);
-                a.neighbors.push(b);
-                b.neighbors.push(a);
-
-                !a.links && (a.links = []);
-                !b.links && (b.links = []);
-                a.links.push(link);
-                b.links.push(link);
-            }
-        });
+        parseMetricsCSV(metricsRes);
 
         // 刷新 UI
-        if (graphInstance) {
-            // 如果圖表已經存在，直接更新數據，這樣轉場比較平滑
-            graphInstance.graphData(gData);
-        } else {
-            // 第一次載入，初始化圖表
-            initNetwork();
-        }
+        if (graphInstance) graphInstance.graphData(gData);
+        else initNetwork();
 
-        // 重新渲染圖例
         renderLegend();
+        renderMetricsTable();
+
+        // const nodesPath = `${config.path}nodes_edges${config.suffix}.json?v=${timestamp}`;
+        // const csvPath = `${config.path}community_grouping_report_final${config.suffix}.csv?v=${timestamp}`;
+        // const matrixPath = `./Output/matrix.json?v=${timestamp}`; // 假設矩陣共用，若不同也要改路徑
+        // const metricsPath = `./Output/network_metrics_report.csv?v=${timestamp}`;
+        // const summaryPath = `./Output/network_summary.json?v=${timestamp}`;
+
+        // 嘗試獲取資料
+        // const [nodesRes, csvRes, matrixRes, metricsRes] = await Promise.all([
+        //     fetch(nodesPath).then((r) =>
+        //         r.ok
+        //             ? r.json()
+        //             : Promise.reject(`Nodes file not found: ${nodesPath}`),
+        //     ),
+        //     fetch(csvPath).then((r) =>
+        //         r.ok
+        //             ? r.text()
+        //             : Promise.reject(`CSV file not found: ${csvPath}`),
+        //     ),
+        //     fetch(matrixPath).then((r) =>
+        //         r.ok ? r.json() : Promise.reject("Matrix file not found"),
+        //     ),
+        //     fetch(metricsPath).then((r) =>
+        //         r.ok ? r.text() : Promise.reject("Metrics error"),
+        //     ),
+        //     fetch(summaryPath).then((r) =>
+        //         r.ok ? r.text() : Promise.reject("summaryPath error"),
+        //     ),
+        // ]);
+
+        // 資料獲取成功後更新全域變數
+        // gData = nodesRes;
+        // matrixData = matrixRes;
+        // parseCommunityCSV(csvRes);
+        // parseMetricsCSV(metricsRes); // [新增]
+        // renderMetricsTable(); // [新增]
+
+        // 重新建立鄰居索引 (Neighbor Index)
+        // gData.links.forEach((link) => {
+        //     const a = gData.nodes.find((n) => n.id === link.source);
+        //     const b = gData.nodes.find((n) => n.id === link.target);
+
+        //     // 防呆：確保節點存在
+        //     if (a && b) {
+        //         !a.neighbors && (a.neighbors = []);
+        //         !b.neighbors && (b.neighbors = []);
+        //         a.neighbors.push(b);
+        //         b.neighbors.push(a);
+
+        //         !a.links && (a.links = []);
+        //         !b.links && (b.links = []);
+        //         a.links.push(link);
+        //         b.links.push(link);
+        //     }
+        // });
+
+        // // 刷新 UI
+        // if (graphInstance) {
+        //     // 如果圖表已經存在，直接更新數據，這樣轉場比較平滑
+        //     graphInstance.graphData(gData);
+        // } else {
+        //     // 第一次載入，初始化圖表
+        //     initNetwork();
+        // }
+
+        // // 重新渲染圖例
+        // renderLegend();
     } catch (error) {
         console.error(`Error loading ${algoKey}:`, error);
         // 若資料缺失，顯示提示訊息
@@ -485,6 +532,10 @@ function switchTab(tab) {
 /**
  * [新增] 解析指標報表 CSV
  */
+
+/**
+ * [修改] 解析指標報表並合併分群結果
+ */
 function parseMetricsCSV(text) {
     const lines = text.split("\n").filter((l) => l.trim() !== "");
     const headers = lines[0].split(",");
@@ -494,12 +545,39 @@ function parseMetricsCSV(text) {
         let obj = {};
         headers.forEach((header, i) => {
             const val = values[i].trim();
-            // 自動轉換數字型態以便排序
             obj[header.trim()] = isNaN(val) ? val : parseFloat(val);
         });
+
+        // [核心新增] 交叉對照分群結果
+        const name = obj["Person_Name"];
+
+        const findGroup = (nodeList) => {
+            const node = nodeList.find((n) => n.name === name);
+            return node ? node.group : "尚未有資料";
+        };
+
+        obj["group_gd"] = findGroup(allAlgosNodes.gd);
+        obj["group_lv"] = findGroup(allAlgosNodes.lv);
+        obj["group_wt"] = findGroup(allAlgosNodes.wt);
+
         return obj;
     });
 }
+// function parseMetricsCSV(text) {
+//     const lines = text.split("\n").filter((l) => l.trim() !== "");
+//     const headers = lines[0].split(",");
+
+//     metricsData = lines.slice(1).map((line) => {
+//         const values = line.split(",");
+//         let obj = {};
+//         headers.forEach((header, i) => {
+//             const val = values[i].trim();
+//             // 自動轉換數字型態以便排序
+//             obj[header.trim()] = isNaN(val) ? val : parseFloat(val);
+//         });
+//         return obj;
+//     });
+// }
 
 /**
  * [新增] 處理排序點擊
@@ -515,13 +593,14 @@ function handleTableSort(key) {
 }
 
 /**
- * [新增] 渲染報表表格
+ * [整合版] 渲染報表表格
+ * 包含：數字置右、千分位、浮點數四捨五入補零、演算法分群對照
  */
 function renderMetricsTable() {
     const container = document.getElementById("heatmap-viz");
-    if (!metricsData.length) return;
+    if (!metricsData || !metricsData.length) return;
 
-    // 排序邏輯
+    // 1. 排序邏輯：支援字串字典序與數字大小序
     const sortedData = [...metricsData].sort((a, b) => {
         let v1 = a[currentSort.key];
         let v2 = b[currentSort.key];
@@ -531,30 +610,37 @@ function renderMetricsTable() {
                 ? v1.localeCompare(v2)
                 : v2.localeCompare(v1);
         } else {
-            return currentSort.asc ? v1 - v2 : v2 - v1;
+            // 處理數字型別排序
+            const n1 = v1 || 0;
+            const n2 = v2 || 0;
+            return currentSort.asc ? n1 - n2 : n2 - n1;
         }
     });
 
+    // 取得所有要顯示的欄位 Key (來自 COLUMN_NAMES 物件)
     const headers = Object.keys(COLUMN_NAMES);
 
     // 2. 構建 HTML
     let html = `
-        <table class="metrics-table w-full text-left text-sm text-slate-300">
-            <thead class="bg-slate-700/50 text-slate-100 sticky top-0">
+        <table class="metrics-table w-full text-left text-sm text-slate-300 border-collapse">
+            <thead class="bg-slate-700/50 text-slate-100 sticky top-0 z-10 shadow-sm">
                 <tr>
                     ${headers
-                        .map(
-                            (h) => `
-                        <th class="p-4 cursor-pointer hover:bg-slate-600 transition-colors" onclick="handleTableSort('${h}')">
-                            <div class="flex items-center ${typeof metricsData[0][h] === "number" ? "justify-end" : ""}">
-                                ${COLUMN_NAMES[h]}
-                                <span class="sort-icon ${currentSort.key === h ? "sort-active" : ""}">
-                                    ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
-                                </span>
-                            </div>
-                        </th>
-                    `,
-                        )
+                        .map((h) => {
+                            // 判斷該欄位第一筆資料是否為數字，決定標題是否靠右
+                            const isNumeric =
+                                typeof metricsData[0][h] === "number";
+                            return `
+                            <th class="p-4 cursor-pointer hover:bg-slate-600 transition-colors border-b border-slate-600" onclick="handleTableSort('${h}')">
+                                <div class="flex items-center ${isNumeric ? "justify-end" : "justify-start"}">
+                                    <span class="whitespace-nowrap">${COLUMN_NAMES[h]}</span>
+                                    <span class="sort-icon ml-1 ${currentSort.key === h ? "sort-active" : "opacity-20"}">
+                                        ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
+                                    </span>
+                                </div>
+                            </th>
+                        `;
+                        })
                         .join("")}
                 </tr>
             </thead>
@@ -562,23 +648,22 @@ function renderMetricsTable() {
                 ${sortedData
                     .map(
                         (row) => `
-                    <tr class="border-b border-slate-700/50">
+                    <tr class="border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors">
                         ${headers
                             .map((h) => {
                                 let displayVal = row[h];
-                                let alignClass = ""; // 預設靠左
+                                let alignClass = "text-left"; // 預設靠左
+                                let customStyle = ""; // 額外樣式
 
-                                // [新增邏輯] 判斷是否為數字型別
+                                // --- 邏輯 A：處理數字型別 (排序、千分位、浮點數) ---
                                 if (
                                     typeof displayVal === "number" &&
                                     !isNaN(displayVal)
                                 ) {
-                                    alignClass = "text-right"; // 1. 數字欄位靠右對齊
+                                    alignClass = "text-right"; // 數字一律靠右
 
-                                    // 2. 判斷是否為浮點數欄位
-                                    // 邏輯：檢查該欄位值是否包含小數點 (非整數)
                                     if (displayVal % 1 !== 0) {
-                                        // 浮點數：四捨五入並補足兩位小數點，再加上千分位
+                                        // 情況 1：浮點數 -> 四捨五入到小數第二位，不足補 0 (例如 45.00)
                                         displayVal = displayVal.toLocaleString(
                                             "en-US",
                                             {
@@ -587,14 +672,34 @@ function renderMetricsTable() {
                                             },
                                         );
                                     } else {
-                                        // 整數：維持整數並加上千分位
+                                        // 情況 2：整數 -> 維持整數並加上千分位
                                         displayVal =
                                             displayVal.toLocaleString("en-US");
                                     }
                                 }
+                                // --- 邏輯 B：處理字串型別 (網紅名稱、演算法分群) ---
+                                else {
+                                    alignClass = "text-left";
+                                    // 如果是演算法分群欄位，加上灰色斜體區隔
+                                    if (h.includes("group")) {
+                                        customStyle = "text-slate-500 italic";
+                                    }
+                                    // 如果是網紅名稱，加上藍色加粗
+                                    if (h === "Person_Name") {
+                                        customStyle =
+                                            "text-blue-400 font-medium";
+                                    }
+                                    // 若為 null 或 undefined 的處理
+                                    if (
+                                        displayVal === null ||
+                                        displayVal === undefined
+                                    ) {
+                                        displayVal = "-";
+                                    }
+                                }
 
                                 return `
-                                <td class="p-4 ${alignClass} ${h === "Person_Name" ? "text-blue-400 font-medium text-left" : ""}">
+                                <td class="p-4 ${alignClass} ${customStyle} whitespace-nowrap">
                                     ${displayVal}
                                 </td>
                             `;
@@ -607,5 +712,102 @@ function renderMetricsTable() {
             </tbody>
         </table>
     `;
+
     container.innerHTML = html;
 }
+
+/**
+ * [新增] 渲染報表表格
+ */
+// function renderMetricsTable() {
+//     const container = document.getElementById("heatmap-viz");
+//     if (!metricsData.length) return;
+
+//     // 排序邏輯
+//     const sortedData = [...metricsData].sort((a, b) => {
+//         let v1 = a[currentSort.key];
+//         let v2 = b[currentSort.key];
+
+//         if (typeof v1 === "string") {
+//             return currentSort.asc
+//                 ? v1.localeCompare(v2)
+//                 : v2.localeCompare(v1);
+//         } else {
+//             return currentSort.asc ? v1 - v2 : v2 - v1;
+//         }
+//     });
+
+//     const headers = Object.keys(COLUMN_NAMES);
+
+//     // 2. 構建 HTML
+//     let html = `
+//         <table class="metrics-table w-full text-left text-sm text-slate-300">
+//             <thead class="bg-slate-700/50 text-slate-100 sticky top-0">
+//                 <tr>
+//                     ${headers
+//                         .map(
+//                             (h) => `
+//                         <th class="p-4 cursor-pointer hover:bg-slate-600 transition-colors" onclick="handleTableSort('${h}')">
+//                             <div class="flex items-center ${typeof metricsData[0][h] === "number" ? "justify-end" : ""}">
+//                                 ${COLUMN_NAMES[h]}
+//                                 <span class="sort-icon ${currentSort.key === h ? "sort-active" : ""}">
+//                                     ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
+//                                 </span>
+//                             </div>
+//                         </th>
+//                     `,
+//                         )
+//                         .join("")}
+//                 </tr>
+//             </thead>
+//             <tbody>
+//                 ${sortedData
+//                     .map(
+//                         (row) => `
+//                     <tr class="border-b border-slate-700/50">
+//                         ${headers
+//                             .map((h) => {
+//                                 let displayVal = row[h];
+//                                 let alignClass = ""; // 預設靠左
+
+//                                 // [新增邏輯] 判斷是否為數字型別
+//                                 if (
+//                                     typeof displayVal === "number" &&
+//                                     !isNaN(displayVal)
+//                                 ) {
+//                                     alignClass = "text-right"; // 1. 數字欄位靠右對齊
+
+//                                     // 2. 判斷是否為浮點數欄位
+//                                     // 邏輯：檢查該欄位值是否包含小數點 (非整數)
+//                                     if (displayVal % 1 !== 0) {
+//                                         // 浮點數：四捨五入並補足兩位小數點，再加上千分位
+//                                         displayVal = displayVal.toLocaleString(
+//                                             "en-US",
+//                                             {
+//                                                 minimumFractionDigits: 2,
+//                                                 maximumFractionDigits: 2,
+//                                             },
+//                                         );
+//                                     } else {
+//                                         // 整數：維持整數並加上千分位
+//                                         displayVal =
+//                                             displayVal.toLocaleString("en-US");
+//                                     }
+//                                 }
+
+//                                 return `
+//                                 <td class="p-4 ${alignClass} ${h === "Person_Name" ? "text-blue-400 font-medium text-left" : ""}">
+//                                     ${displayVal}
+//                                 </td>
+//                             `;
+//                             })
+//                             .join("")}
+//                     </tr>
+//                 `,
+//                     )
+//                     .join("")}
+//             </tbody>
+//         </table>
+//     `;
+//     container.innerHTML = html;
+// }

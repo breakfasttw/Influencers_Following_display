@@ -150,8 +150,8 @@ body {
 }
 @media (min-width: 1024px) {
     .metrics-table-container {
-        margin-left: 160x;
-        margin-right: 160px;
+        margin-left: 120x;
+        margin-right: 120px;
     }
 }
 
