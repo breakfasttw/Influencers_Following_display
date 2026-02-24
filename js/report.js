@@ -1,4 +1,8 @@
-import { COLUMN_NAMES, CATEGORY_COLORS } from "./config.js";
+import {
+    COLUMN_NAMES,
+    CATEGORY_COLORS,
+    COLUMN_EXPLANATIONS,
+} from "./config.js";
 
 // 將資料狀態管理在 report.js 內部，解決作用域問題
 export let metricsData = []; // [修改] 加上 export，讓 network.js 可以讀取此數據進行圖表統計
@@ -90,31 +94,6 @@ export function parseMetricsCSV(text, allAlgosNodes) {
 
     return metricsData;
 }
-// export function parseMetricsCSV(text, allAlgosNodes) {
-//     const lines = text.split("\n").filter((l) => l.trim() !== "");
-//     const headers = lines[0].split(",");
-
-//     return lines.slice(1).map((line) => {
-//         const values = line.split(",");
-//         let obj = {};
-//         headers.forEach((header, i) => {
-//             const val = values[i].trim();
-//             obj[header.trim()] = isNaN(val) ? val : parseFloat(val);
-//         });
-
-//         const name = obj["Person_Name"];
-//         const findGroup = (nodeList) => {
-//             const node = nodeList.find((n) => n.name === name);
-//             return node ? node.group : "-";
-//         };
-
-//         obj["group_gd"] = findGroup(allAlgosNodes.gd);
-//         obj["group_lv"] = findGroup(allAlgosNodes.lv);
-//         obj["group_wt"] = findGroup(allAlgosNodes.wt);
-
-//         return obj;
-//     });
-// }
 
 /**
  * 處理排序點擊
@@ -154,17 +133,25 @@ export function renderMetricsTable() {
                 <thead class="sticky top-0 z-10">
                     <tr class="bg-slate-800 shadow-sm">
                         ${headers
-                            .map(
-                                (h) => `
-                            <th class="p-3 cursor-pointer hover:bg-slate-700 transition-colors border-b border-slate-600 bg-slate-800" onclick="handleTableSort('${h}')">
-                                <div class="flex items-center ${typeof metricsData[0][h] === "number" ? "justify-end" : "justify-start"}">
-                                    <span class="whitespace-nowrap">${COLUMN_NAMES[h]}</span>
-                                    <span class="sort-icon ml-1 ${currentSort.key === h ? "sort-active" : "opacity-20"}">
-                                        ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
-                                    </span>
-                                </div>
-                            </th>`,
-                            )
+                            .map((h) => {
+                                // [新增] 取得對應的說明文字，若無則留空
+                                const explanation =
+                                    COLUMN_EXPLANATIONS[h] || "";
+
+                                return `
+                                    <th 
+                                        class="p-3 cursor-pointer hover:bg-slate-700 transition-colors border-b border-slate-600 bg-slate-800" 
+                                        onclick="handleTableSort('${h}')"
+                                        title="${explanation}" 
+                                    >
+                                        <div class="flex items-center ${typeof metricsData[0][h] === "number" ? "justify-end" : "justify-start"}">
+                                            <span class="whitespace-nowrap border-b border-dotted border-slate-500">${COLUMN_NAMES[h]}</span>
+                                            <span class="sort-icon ml-1 ${currentSort.key === h ? "sort-active" : "opacity-20"}">
+                                                ${currentSort.key === h ? (currentSort.asc ? "▲" : "▼") : "↕"}
+                                            </span>
+                                        </div>
+                                    </th>`;
+                            })
                             .join("")}
                     </tr>
                 </thead>

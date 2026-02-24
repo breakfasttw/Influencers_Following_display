@@ -26,6 +26,24 @@ export const COLUMN_NAMES = {
     group_wt: "WT",
 };
 
+// [新增] 欄位 hover 說明對照表
+export const COLUMN_EXPLANATIONS = {
+    Original_Rank: "該網紅在原始資料中的排序編號",
+    Person_Name: "點擊可開啟該網紅的 Instagram 頁面",
+    "In_Degree (被追蹤數)": "有多少圈內網紅追蹤他 (In-Degree)",
+    "Out_Degree (主動追蹤數)": "他主動追蹤了多少圈內網紅 (Out-Degree)",
+    "Mutual_Follow (互粉數)": "雙向互相追蹤的人數",
+    Network_Influence_Score:
+        "計算公式：InD / (群體總數 - 1)，代表其在圈內的受關注程度",
+    Betweenness_Centrality:
+        "中介中心性：代表該節點在網絡中擔任『橋樑』的程度，nx.betweenness_centrality(G, normalized=True)",
+    followers: "該網紅IG上讀總粉絲數",
+    distinct_following: "該網紅IG上的總追蹤人數",
+    category: "創作領域類別(Aisa KOL)",
+    group_gd: "使用 Greedy Modularity 演算法計算出的分群結果",
+    group_lv: "使用 Louvain 演算法計算出的分群結果",
+    group_wt: "使用 WalkTrap 演算法計算出的分群結果",
+};
 // [新增] 類別顏色對照表
 export const CATEGORY_COLORS = {
     "3C科技": "#4A90E2",
