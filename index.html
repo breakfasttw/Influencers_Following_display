@@ -104,7 +104,7 @@
 
             <div
                 id="legend-panel"
-                class="absolute top-0 left-0 h-full w-80 lg:w-96 bg-slate-900/95 backdrop-blur-md border-r border-slate-700 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto"
+                class="absolute top-0 left-0 h-full w-80 lg:w-2/5 bg-slate-900/95 backdrop-blur-md border-r border-slate-700 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto"
             >
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
@@ -116,9 +116,15 @@
                         </h2>
                         <button
                             onclick="toggleLegend()"
-                            class="text-slate-400 hover:text-white"
-                        ></button>
+                            class="text-slate-400 hover:text-white text-xl font-light transition-colors p-1"
+                            title="關閉面板"
+                        >
+                            ✕
+                        </button>
                     </div>
+                    <!-- 母體與演算法摘要 -->
+                    <div id="summary-section" class="mb-6 space-y-4"></div>
+
                     <div id="legend-content" class="space-y-4">
                         <p class="text-slate-500 text-sm">載入資料中...</p>
                     </div>

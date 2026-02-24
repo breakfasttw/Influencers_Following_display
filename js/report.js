@@ -1,7 +1,7 @@
 import { COLUMN_NAMES, CATEGORY_COLORS } from "./config.js";
 
 // 將資料狀態管理在 report.js 內部，解決作用域問題
-let metricsData = [];
+export let metricsData = []; // [修改] 加上 export，讓 network.js 可以讀取此數據進行圖表統計
 let currentSort = { key: "Original_Rank", asc: true };
 
 // ==========================================

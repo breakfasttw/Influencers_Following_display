@@ -4,6 +4,7 @@ import {
     renderLegend,
     focusNode,
     handleSearch,
+    renderNetworkSummary,
 } from "./network.js";
 import {
     parseCommunityCSV,
@@ -49,7 +50,7 @@ async function switchAlgorithm(algoKey) {
 
     try {
         const timestamp = Date.now();
-        const [nodesGD, nodesLV, nodesWT, csvRes, metricsRes] =
+        const [nodesGD, nodesLV, nodesWT, csvRes, metricsRes, summaryRes] =
             await Promise.all([
                 fetch(`./Output/nodes_edges_gd.json?v=${timestamp}`).then((r) =>
                     r.json(),
@@ -66,6 +67,9 @@ async function switchAlgorithm(algoKey) {
                 fetch(
                     `./Output/network_metrics_report.csv?v=${timestamp}`,
                 ).then((r) => r.text()),
+                fetch(`./Output/network_summary.json?v=${timestamp}`).then(
+                    (r) => r.json(),
+                ),
             ]);
 
         allAlgosNodes.gd = nodesGD.nodes;
@@ -80,6 +84,9 @@ async function switchAlgorithm(algoKey) {
                   : nodesWT;
         communityData = parseCommunityCSV(csvRes);
 
+        // [新增] 呼叫渲染摘要的函式 (定義在 network.js)
+        renderNetworkSummary(summaryRes, algoKey);
+
         if (graphInstance) graphInstance.graphData(gData);
         else graphInstance = initNetwork(gData);
         // 2. 執行解析 (傳入 text 資料與對照表物件)
@@ -87,6 +94,9 @@ async function switchAlgorithm(algoKey) {
 
         // 3. 渲染畫面
         renderMetricsTable();
+
+        // 【關鍵：補上這行】渲染左側分群圖例
+        renderLegend(communityData, gData);
     } catch (error) {
         console.error("載入失敗:", error);
     }

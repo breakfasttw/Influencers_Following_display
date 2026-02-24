@@ -11,7 +11,9 @@
         "out_degree": 48,
         "mutual": 42,
         "distinct_following": 985
-      }
+      },
+      "between_centrality": 0.046467,
+      "category": "美食料理,3C科技,趣味搞笑"
     },
     {
       "id": "這群人TGOP",
@@ -24,7 +26,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 15
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "趣味搞笑"
     },
     {
       "id": "HahaTai-哈哈台",
@@ -37,7 +41,9 @@
         "out_degree": 29,
         "mutual": 12,
         "distinct_following": 1092
-      }
+      },
+      "between_centrality": 0.006395,
+      "category": "趣味搞笑"
     },
     {
       "id": "PEETA葛格",
@@ -50,7 +56,9 @@
         "out_degree": 28,
         "mutual": 24,
         "distinct_following": 1820
-      }
+      },
+      "between_centrality": 0.007009,
+      "category": "運動健身"
     },
     {
       "id": "大蛇丸",
@@ -63,7 +71,9 @@
         "out_degree": 30,
         "mutual": 26,
         "distinct_following": 378
-      }
+      },
+      "between_centrality": 0.008047,
+      "category": "趣味搞笑"
     },
     {
       "id": "Six-Wang",
@@ -76,7 +86,9 @@
         "out_degree": 21,
         "mutual": 18,
         "distinct_following": 445
-      }
+      },
+      "between_centrality": 0.00907,
+      "category": "遊戲電玩"
     },
     {
       "id": "魚乾",
@@ -89,7 +101,9 @@
         "out_degree": 40,
         "mutual": 31,
         "distinct_following": 496
-      }
+      },
+      "between_centrality": 0.029991,
+      "category": "寵物,遊戲電玩,趣味搞笑"
     },
     {
       "id": "超認真少年-I'm-Serious",
@@ -102,7 +116,9 @@
         "out_degree": 25,
         "mutual": 16,
         "distinct_following": 744
-      }
+      },
+      "between_centrality": 0.008737,
+      "category": "知識教育"
     },
     {
       "id": "好味小姐",
@@ -115,7 +131,9 @@
         "out_degree": 12,
         "mutual": 7,
         "distinct_following": 217
-      }
+      },
+      "between_centrality": 0.002319,
+      "category": "美食料理,寵物"
     },
     {
       "id": "呱吉",
@@ -128,7 +146,9 @@
         "out_degree": 21,
         "mutual": 20,
         "distinct_following": 719
-      }
+      },
+      "between_centrality": 0.009695,
+      "category": "趣味搞笑,時事討論"
     },
     {
       "id": "千千進食中",
@@ -141,7 +161,9 @@
         "out_degree": 39,
         "mutual": 35,
         "distinct_following": 962
-      }
+      },
+      "between_centrality": 0.029612,
+      "category": "美食料理"
     },
     {
       "id": "How-Fun-如何爽",
@@ -154,7 +176,9 @@
         "out_degree": 7,
         "mutual": 5,
         "distinct_following": 103
-      }
+      },
+      "between_centrality": 0.012243,
+      "category": "趣味搞笑"
     },
     {
       "id": "廉傑克曼",
@@ -167,7 +191,9 @@
         "out_degree": 42,
         "mutual": 30,
         "distinct_following": 4006
-      }
+      },
+      "between_centrality": 0.035839,
+      "category": "遊戲電玩"
     },
     {
       "id": "白癡公主",
@@ -180,7 +206,9 @@
         "out_degree": 25,
         "mutual": 21,
         "distinct_following": 501
-      }
+      },
+      "between_centrality": 0.024021,
+      "category": "趣味搞笑"
     },
     {
       "id": "蔡阿嘎",
@@ -193,7 +221,9 @@
         "out_degree": 30,
         "mutual": 28,
         "distinct_following": 500
-      }
+      },
+      "between_centrality": 0.031814,
+      "category": "趣味搞笑"
     },
     {
       "id": "PanSci-泛科學",
@@ -206,7 +236,9 @@
         "out_degree": 12,
         "mutual": 2,
         "distinct_following": 397
-      }
+      },
+      "between_centrality": 0.001163,
+      "category": "知識教育"
     },
     {
       "id": "BBpPro-Lin-Ching-Chieh-林敬傑",
@@ -219,7 +251,9 @@
         "out_degree": 4,
         "mutual": 4,
         "distinct_following": 328
-      }
+      },
+      "between_centrality": 0.000229,
+      "category": "運動健身"
     },
     {
       "id": "星期天",
@@ -232,7 +266,9 @@
         "out_degree": 27,
         "mutual": 11,
         "distinct_following": 1569
-      }
+      },
+      "between_centrality": 0.007126,
+      "category": "綜合其他"
     },
     {
       "id": "Onion-man-洋蔥先生與阿文",
@@ -245,7 +281,9 @@
         "out_degree": 51,
         "mutual": 35,
         "distinct_following": 921
-      }
+      },
+      "between_centrality": 0.04908,
+      "category": "表演藝術,趣味搞笑"
     },
     {
       "id": "泱泱-LYNN",
@@ -258,7 +296,9 @@
         "out_degree": 18,
         "mutual": 4,
         "distinct_following": 93
-      }
+      },
+      "between_centrality": 0.000577,
+      "category": "帶貨分潤"
     },
     {
       "id": "志祺七七",
@@ -271,7 +311,9 @@
         "out_degree": 16,
         "mutual": 13,
         "distinct_following": 537
-      }
+      },
+      "between_centrality": 0.004808,
+      "category": "知識教育,時事討論,高階經理人"
     },
     {
       "id": "江老師",
@@ -284,7 +326,9 @@
         "out_degree": 9,
         "mutual": 6,
         "distinct_following": 621
-      }
+      },
+      "between_centrality": 0.004282,
+      "category": "表演藝術,時尚潮流,家庭母嬰"
     },
     {
       "id": "HOOK",
@@ -297,7 +341,9 @@
         "out_degree": 29,
         "mutual": 21,
         "distinct_following": 446
-      }
+      },
+      "between_centrality": 0.011663,
+      "category": "寵物,旅遊,美食料理"
     },
     {
       "id": "柴犬Nana和阿楞的一天",
@@ -310,7 +356,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 0
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "寵物"
     },
     {
       "id": "阿啾繪圖同萌",
@@ -323,7 +371,9 @@
         "out_degree": 5,
         "mutual": 5,
         "distinct_following": 639
-      }
+      },
+      "between_centrality": 8.5e-05,
+      "category": "表演藝術,趣味搞笑"
     },
     {
       "id": "人類超有病-Baxuan",
@@ -336,7 +386,9 @@
         "out_degree": 27,
         "mutual": 17,
         "distinct_following": 2828
-      }
+      },
+      "between_centrality": 0.010611,
+      "category": "表演藝術,趣味搞笑"
     },
     {
       "id": "貓貓蟲-咖波",
@@ -349,7 +401,9 @@
         "out_degree": 15,
         "mutual": 8,
         "distinct_following": 291
-      }
+      },
+      "between_centrality": 0.003331,
+      "category": "表演藝術"
     },
     {
       "id": "鹿人",
@@ -362,7 +416,9 @@
         "out_degree": 21,
         "mutual": 11,
         "distinct_following": 207
-      }
+      },
+      "between_centrality": 0.004921,
+      "category": "表演藝術,趣味搞笑"
     },
     {
       "id": "健人蓋仇",
@@ -375,7 +431,9 @@
         "out_degree": 17,
         "mutual": 9,
         "distinct_following": 820
-      }
+      },
+      "between_centrality": 0.002414,
+      "category": "運動健身"
     },
     {
       "id": "黃氏兄弟",
@@ -388,7 +446,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 2
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "趣味搞笑,表演藝術"
     },
     {
       "id": "飆悍",
@@ -401,7 +461,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 150
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "運動健身,遊戲電玩,時事討論"
     },
     {
       "id": "黃阿瑪的後宮生活",
@@ -414,7 +476,9 @@
         "out_degree": 9,
         "mutual": 5,
         "distinct_following": 159
-      }
+      },
+      "between_centrality": 0.002719,
+      "category": "寵物"
     },
     {
       "id": "木曜4超玩",
@@ -427,7 +491,9 @@
         "out_degree": 12,
         "mutual": 6,
         "distinct_following": 70
-      }
+      },
+      "between_centrality": 0.000792,
+      "category": "旅遊"
     },
     {
       "id": "艾爾文",
@@ -440,7 +506,9 @@
         "out_degree": 1,
         "mutual": 0,
         "distinct_following": 141
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "知識教育"
     },
     {
       "id": "Ru's-Piano-Ru味春捲",
@@ -453,7 +521,9 @@
         "out_degree": 22,
         "mutual": 10,
         "distinct_following": 693
-      }
+      },
+      "between_centrality": 0.019633,
+      "category": "表演藝術"
     },
     {
       "id": "台灣吧",
@@ -466,7 +536,9 @@
         "out_degree": 15,
         "mutual": 3,
         "distinct_following": 176
-      }
+      },
+      "between_centrality": 0.000897,
+      "category": "知識教育,理財創業"
     },
     {
       "id": "豆漿--Soybean-Milk",
@@ -479,7 +551,9 @@
         "out_degree": 5,
         "mutual": 3,
         "distinct_following": 34
-      }
+      },
+      "between_centrality": 0.000259,
+      "category": "寵物"
     },
     {
       "id": "電瀨少女-女孩的科技日常",
@@ -492,7 +566,9 @@
         "out_degree": 11,
         "mutual": 6,
         "distinct_following": 87
-      }
+      },
+      "between_centrality": 0.000294,
+      "category": "3C科技"
     },
     {
       "id": "P.LEAGUE",
@@ -505,7 +581,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 16
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "運動健身"
     },
     {
       "id": "我是老爸-我不要當爸!",
@@ -518,7 +596,9 @@
         "out_degree": 11,
         "mutual": 9,
         "distinct_following": 300
-      }
+      },
+      "between_centrality": 0.000702,
+      "category": "旅遊,美食料理"
     },
     {
       "id": "那些電影教我的事",
@@ -531,7 +611,9 @@
         "out_degree": 1,
         "mutual": 0,
         "distinct_following": 87
-      }
+      },
+      "between_centrality": 8.9e-05,
+      "category": "影視評論"
     },
     {
       "id": "麻糬爸",
@@ -544,7 +626,9 @@
         "out_degree": 5,
         "mutual": 2,
         "distinct_following": 116
-      }
+      },
+      "between_centrality": 0.000215,
+      "category": "表演藝術"
     },
     {
       "id": "林淑芬2.0",
@@ -557,7 +641,9 @@
         "out_degree": 16,
         "mutual": 2,
         "distinct_following": 542
-      }
+      },
+      "between_centrality": 0.000533,
+      "category": "綜合其他"
     },
     {
       "id": "Aries艾瑞絲",
@@ -570,7 +656,9 @@
         "out_degree": 32,
         "mutual": 29,
         "distinct_following": 940
-      }
+      },
+      "between_centrality": 0.011456,
+      "category": "美食料理,表演藝術,趣味搞笑"
     },
     {
       "id": "Andy老師",
@@ -583,7 +671,9 @@
         "out_degree": 5,
         "mutual": 5,
         "distinct_following": 57
-      }
+      },
+      "between_centrality": 0.002013,
+      "category": "趣味搞笑,表演藝術"
     },
     {
       "id": "愛里",
@@ -596,7 +686,9 @@
         "out_degree": 46,
         "mutual": 16,
         "distinct_following": 1318
-      }
+      },
+      "between_centrality": 0.009393,
+      "category": "知識教育,趣味搞笑"
     },
     {
       "id": "lan&Eric",
@@ -609,7 +701,9 @@
         "out_degree": 24,
         "mutual": 17,
         "distinct_following": 481
-      }
+      },
+      "between_centrality": 0.005044,
+      "category": "旅遊,趣味搞笑"
     },
     {
       "id": "Bonjour-Louis!-我是路易",
@@ -622,7 +716,9 @@
         "out_degree": 11,
         "mutual": 7,
         "distinct_following": 385
-      }
+      },
+      "between_centrality": 0.001058,
+      "category": "旅遊"
     },
     {
       "id": "琳妲-林羿禎",
@@ -635,7 +731,9 @@
         "out_degree": 47,
         "mutual": 34,
         "distinct_following": 2400
-      }
+      },
+      "between_centrality": 0.040252,
+      "category": "表演藝術,趣味搞笑"
     },
     {
       "id": "莊酷炫",
@@ -648,7 +746,9 @@
         "out_degree": 70,
         "mutual": 45,
         "distinct_following": 4230
-      }
+      },
+      "between_centrality": 0.089863,
+      "category": "趣味搞笑"
     },
     {
       "id": "蕾菈-Lyla",
@@ -661,7 +761,9 @@
         "out_degree": 46,
         "mutual": 32,
         "distinct_following": 1600
-      }
+      },
+      "between_centrality": 0.022878,
+      "category": "趣味搞笑"
     },
     {
       "id": "那對夫妻",
@@ -674,7 +776,9 @@
         "out_degree": 1,
         "mutual": 1,
         "distinct_following": 42
-      }
+      },
+      "between_centrality": 0.000117,
+      "category": "趣味搞笑,家庭母嬰,表演藝術"
     },
     {
       "id": "小A辣",
@@ -687,7 +791,9 @@
         "out_degree": 16,
         "mutual": 13,
         "distinct_following": 1481
-      }
+      },
+      "between_centrality": 0.007205,
+      "category": "趣味搞笑"
     },
     {
       "id": "林進-飛醺卑鄙-fashion-baby",
@@ -700,7 +806,9 @@
         "out_degree": 34,
         "mutual": 19,
         "distinct_following": 2245
-      }
+      },
+      "between_centrality": 0.010817,
+      "category": "趣味搞笑"
     },
     {
       "id": "Patrick-派翠克",
@@ -713,7 +821,9 @@
         "out_degree": 14,
         "mutual": 14,
         "distinct_following": 563
-      }
+      },
+      "between_centrality": 0.017433,
+      "category": "趣味搞笑"
     },
     {
       "id": "元元",
@@ -726,7 +836,9 @@
         "out_degree": 20,
         "mutual": 18,
         "distinct_following": 558
-      }
+      },
+      "between_centrality": 0.004148,
+      "category": "時尚潮流"
     },
     {
       "id": "陳彥婷",
@@ -739,7 +851,9 @@
         "out_degree": 29,
         "mutual": 25,
         "distinct_following": 352
-      }
+      },
+      "between_centrality": 0.008905,
+      "category": "趣味搞笑"
     },
     {
       "id": "一隻阿圓",
@@ -752,7 +866,9 @@
         "out_degree": 24,
         "mutual": 23,
         "distinct_following": 590
-      }
+      },
+      "between_centrality": 0.022631,
+      "category": "美妝保養,時尚潮流,旅遊"
     },
     {
       "id": "Irene-林艾融",
@@ -765,7 +881,9 @@
         "out_degree": 14,
         "mutual": 9,
         "distinct_following": 1279
-      }
+      },
+      "between_centrality": 0.004884,
+      "category": "美妝保養,時尚潮流"
     },
     {
       "id": "愛莉莎莎-Alisasa",
@@ -778,7 +896,9 @@
         "out_degree": 36,
         "mutual": 28,
         "distinct_following": 1266
-      }
+      },
+      "between_centrality": 0.020846,
+      "category": "美妝保養,時尚潮流"
     },
     {
       "id": "見習網美小吳",
@@ -791,7 +911,9 @@
         "out_degree": 34,
         "mutual": 29,
         "distinct_following": 769
-      }
+      },
+      "between_centrality": 0.016257,
+      "category": "美妝保養,趣味搞笑"
     },
     {
       "id": "關韶文",
@@ -804,7 +926,9 @@
         "out_degree": 19,
         "mutual": 17,
         "distinct_following": 500
-      }
+      },
+      "between_centrality": 0.004916,
+      "category": "美妝保養,趣味搞笑,表演藝術"
     },
     {
       "id": "孫生",
@@ -817,7 +941,9 @@
         "out_degree": 28,
         "mutual": 20,
         "distinct_following": 1104
-      }
+      },
+      "between_centrality": 0.016642,
+      "category": "趣味搞笑"
     },
     {
       "id": "羚小鹿",
@@ -830,7 +956,9 @@
         "out_degree": 8,
         "mutual": 7,
         "distinct_following": 625
-      }
+      },
+      "between_centrality": 0.000997,
+      "category": "美妝保養,旅遊,表演藝術"
     },
     {
       "id": "嘎嫂二伯",
@@ -843,7 +971,9 @@
         "out_degree": 28,
         "mutual": 25,
         "distinct_following": 700
-      }
+      },
+      "between_centrality": 0.016039,
+      "category": "旅遊,家庭母嬰"
     },
     {
       "id": "Yun-Chou",
@@ -856,7 +986,9 @@
         "out_degree": 17,
         "mutual": 15,
         "distinct_following": 991
-      }
+      },
+      "between_centrality": 0.005798,
+      "category": "家庭母嬰"
     },
     {
       "id": "彼得爸與蘇珊媽",
@@ -869,7 +1001,9 @@
         "out_degree": 20,
         "mutual": 8,
         "distinct_following": 1251
-      }
+      },
+      "between_centrality": 0.005029,
+      "category": "旅遊,家庭母嬰,帶貨分潤"
     },
     {
       "id": "欸你這週要幹嘛",
@@ -882,7 +1016,9 @@
         "out_degree": 30,
         "mutual": 20,
         "distinct_following": 472
-      }
+      },
+      "between_centrality": 0.009713,
+      "category": "趣味搞笑"
     },
     {
       "id": "蔡桃貴",
@@ -895,7 +1031,9 @@
         "out_degree": 2,
         "mutual": 2,
         "distinct_following": 59
-      }
+      },
+      "between_centrality": 5.1e-05,
+      "category": "家庭母嬰,趣味搞笑"
     },
     {
       "id": "咪妃Julia",
@@ -908,7 +1046,9 @@
         "out_degree": 21,
         "mutual": 21,
         "distinct_following": 572
-      }
+      },
+      "between_centrality": 0.022079,
+      "category": "遊戲電玩,表演藝術,趣味搞笑"
     },
     {
       "id": "瑀熙-Yuci",
@@ -921,7 +1061,9 @@
         "out_degree": 22,
         "mutual": 15,
         "distinct_following": 612
-      }
+      },
+      "between_centrality": 0.018064,
+      "category": "旅遊,遊戲電玩"
     },
     {
       "id": "小葵-XiaoKui",
@@ -934,7 +1076,9 @@
         "out_degree": 23,
         "mutual": 13,
         "distinct_following": 762
-      }
+      },
+      "between_centrality": 0.0124,
+      "category": "遊戲電玩"
     },
     {
       "id": "Sandy-珊迪",
@@ -947,7 +1091,9 @@
         "out_degree": 24,
         "mutual": 15,
         "distinct_following": 477
-      }
+      },
+      "between_centrality": 0.01211,
+      "category": "美食料理,寵物,遊戲電玩"
     },
     {
       "id": "丹妮婊姐",
@@ -960,7 +1106,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 2
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "美妝保養,時尚潮流,趣味搞笑"
     },
     {
       "id": "三原慧悟-Sanyuan_JAPAN",
@@ -973,7 +1121,9 @@
         "out_degree": 13,
         "mutual": 8,
         "distinct_following": 596
-      }
+      },
+      "between_centrality": 0.000186,
+      "category": "旅遊,趣味搞笑"
     },
     {
       "id": "KEOKI-BLACK布萊克薛薛",
@@ -986,7 +1136,9 @@
         "out_degree": 4,
         "mutual": 4,
         "distinct_following": 398
-      }
+      },
+      "between_centrality": 0.000516,
+      "category": "旅遊,美食料理"
     },
     {
       "id": "Peter-Su",
@@ -999,7 +1151,9 @@
         "out_degree": 3,
         "mutual": 3,
         "distinct_following": 931
-      }
+      },
+      "between_centrality": 8e-05,
+      "category": "旅遊,知識教育"
     },
     {
       "id": "莊政威-Cliff-Chuang",
@@ -1012,7 +1166,9 @@
         "out_degree": 2,
         "mutual": 2,
         "distinct_following": 198
-      }
+      },
+      "between_centrality": 4e-06,
+      "category": "汽機車"
     },
     {
       "id": "喬喬兒Sylvia",
@@ -1025,7 +1181,9 @@
         "out_degree": 5,
         "mutual": 4,
         "distinct_following": 927
-      }
+      },
+      "between_centrality": 0.000254,
+      "category": "美妝保養,旅遊,表演藝術"
     },
     {
       "id": "周小葳",
@@ -1038,7 +1196,9 @@
         "out_degree": 14,
         "mutual": 1,
         "distinct_following": 1746
-      }
+      },
+      "between_centrality": 0.001924,
+      "category": "時尚潮流,高階經理人"
     },
     {
       "id": "辣媽Shania",
@@ -1051,7 +1211,9 @@
         "out_degree": 3,
         "mutual": 0,
         "distinct_following": 412
-      }
+      },
+      "between_centrality": 5.8e-05,
+      "category": "美食料理"
     },
     {
       "id": "依梨",
@@ -1064,7 +1226,9 @@
         "out_degree": 3,
         "mutual": 2,
         "distinct_following": 195
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "時尚潮流,遊戲電玩"
     },
     {
       "id": "Sandy-&-Mandy",
@@ -1077,7 +1241,9 @@
         "out_degree": 1,
         "mutual": 1,
         "distinct_following": 262
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "表演藝術"
     },
     {
       "id": "妮妮-Nini",
@@ -1090,7 +1256,9 @@
         "out_degree": 35,
         "mutual": 15,
         "distinct_following": 2823
-      }
+      },
+      "between_centrality": 0.055387,
+      "category": "時尚潮流,美食料理"
     },
     {
       "id": "魔術Channel---Davio",
@@ -1103,7 +1271,9 @@
         "out_degree": 10,
         "mutual": 9,
         "distinct_following": 674
-      }
+      },
+      "between_centrality": 0.012075,
+      "category": "表演藝術"
     },
     {
       "id": "李恩菲x菲菲",
@@ -1116,7 +1286,9 @@
         "out_degree": 12,
         "mutual": 7,
         "distinct_following": 974
-      }
+      },
+      "between_centrality": 0.007801,
+      "category": "運動健身,表演藝術"
     },
     {
       "id": "小象愛出門",
@@ -1129,7 +1301,9 @@
         "out_degree": 12,
         "mutual": 7,
         "distinct_following": 1127
-      }
+      },
+      "between_centrality": 0.004636,
+      "category": "美食料理,旅遊"
     },
     {
       "id": "PopDaily",
@@ -1142,7 +1316,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 20
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "趣味搞笑"
     },
     {
       "id": "Ines-Wang",
@@ -1155,7 +1331,9 @@
         "out_degree": 3,
         "mutual": 2,
         "distinct_following": 810
-      }
+      },
+      "between_centrality": 0.00044,
+      "category": "美妝保養,時尚潮流,帶貨分潤"
     },
     {
       "id": "Emma艾瑪",
@@ -1168,7 +1346,9 @@
         "out_degree": 11,
         "mutual": 8,
         "distinct_following": 943
-      }
+      },
+      "between_centrality": 0.006673,
+      "category": "運動健身"
     },
     {
       "id": "黃山料",
@@ -1181,7 +1361,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 1
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "時事討論"
     },
     {
       "id": "豪吃來吃",
@@ -1194,7 +1376,9 @@
         "out_degree": 3,
         "mutual": 3,
         "distinct_following": 219
-      }
+      },
+      "between_centrality": 0.000173,
+      "category": "美食料理"
     },
     {
       "id": "虎麗笑嗨嗨",
@@ -1207,7 +1391,9 @@
         "out_degree": 2,
         "mutual": 2,
         "distinct_following": 76
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "美食料理"
     },
     {
       "id": "Jason-Chen-陳以桐",
@@ -1220,7 +1406,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 69
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "表演藝術"
     },
     {
       "id": "Lilyflute長笛姐姐",
@@ -1233,7 +1421,9 @@
         "out_degree": 2,
         "mutual": 1,
         "distinct_following": 433
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "表演藝術"
     },
     {
       "id": "閃電狼Flash-Wolves",
@@ -1246,7 +1436,9 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 96
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "遊戲電玩"
     },
     {
       "id": "漢娜在翻譯",
@@ -1259,20 +1451,24 @@
         "out_degree": 0,
         "mutual": 0,
         "distinct_following": 242
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "旅遊"
     },
     {
       "id": "紫玥桃",
       "name": "紫玥桃",
       "group": "I",
-      "color": "#45B7D1",
+      "color": "#F7A0C0",
       "val": 1.0,
       "metrics": {
         "in_degree": 0,
         "out_degree": 2,
         "mutual": 0,
         "distinct_following": 1689
-      }
+      },
+      "between_centrality": 0.0,
+      "category": "時尚潮流,表演藝術"
     }
   ],
   "links": [
