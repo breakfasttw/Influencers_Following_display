@@ -10,7 +10,9 @@
         "in_degree": 45,
         "out_degree": 48,
         "mutual": 42,
-        "distinct_following": 985
+        "Following": 996,
+        "Followers": 666819,
+        "posts": 1615
       },
       "between_centrality": 0.046467,
       "category": "美食料理,3C科技,趣味搞笑"
@@ -25,7 +27,9 @@
         "in_degree": 34,
         "out_degree": 34,
         "mutual": 29,
-        "distinct_following": 769
+        "Following": 770,
+        "Followers": 760960,
+        "posts": 1739
       },
       "between_centrality": 0.016257,
       "category": "美妝保養,趣味搞笑"
@@ -40,7 +44,9 @@
         "in_degree": 9,
         "out_degree": 17,
         "mutual": 9,
-        "distinct_following": 820
+        "Following": 827,
+        "Followers": 262770,
+        "posts": 829
       },
       "between_centrality": 0.002414,
       "category": "運動健身"
@@ -55,7 +61,9 @@
         "in_degree": 46,
         "out_degree": 70,
         "mutual": 45,
-        "distinct_following": 4230
+        "Following": 4255,
+        "Followers": 451000,
+        "posts": 3201
       },
       "between_centrality": 0.089863,
       "category": "趣味搞笑"
@@ -70,7 +78,9 @@
         "in_degree": 11,
         "out_degree": 4,
         "mutual": 4,
-        "distinct_following": 328
+        "Following": 326,
+        "Followers": 264414,
+        "posts": 1397
       },
       "between_centrality": 0.000229,
       "category": "運動健身"
@@ -85,7 +95,9 @@
         "in_degree": 2,
         "out_degree": 16,
         "mutual": 2,
-        "distinct_following": 542
+        "Following": 547,
+        "Followers": 883571,
+        "posts": 1371
       },
       "between_centrality": 0.000533,
       "category": "綜合其他"
@@ -100,7 +112,9 @@
         "in_degree": 29,
         "out_degree": 5,
         "mutual": 5,
-        "distinct_following": 57
+        "Following": 57,
+        "Followers": 1241259,
+        "posts": 391
       },
       "between_centrality": 0.002013,
       "category": "趣味搞笑,表演藝術"
@@ -115,7 +129,9 @@
         "in_degree": 33,
         "out_degree": 30,
         "mutual": 26,
-        "distinct_following": 378
+        "Following": 390,
+        "Followers": 551530,
+        "posts": 882
       },
       "between_centrality": 0.008047,
       "category": "趣味搞笑"
@@ -130,7 +146,9 @@
         "in_degree": 26,
         "out_degree": 16,
         "mutual": 13,
-        "distinct_following": 537
+        "Following": 552,
+        "Followers": 238862,
+        "posts": 1093
       },
       "between_centrality": 0.004808,
       "category": "知識教育,時事討論,高階經理人"
@@ -145,7 +163,9 @@
         "in_degree": 8,
         "out_degree": 3,
         "mutual": 3,
-        "distinct_following": 931
+        "Following": 930,
+        "Followers": 668099,
+        "posts": 3594
       },
       "between_centrality": 8e-05,
       "category": "旅遊,知識教育"
@@ -160,7 +180,9 @@
         "in_degree": 22,
         "out_degree": 24,
         "mutual": 17,
-        "distinct_following": 481
+        "Following": 482,
+        "Followers": 609185,
+        "posts": 1101
       },
       "between_centrality": 0.005044,
       "category": "旅遊,趣味搞笑"
@@ -175,7 +197,9 @@
         "in_degree": 14,
         "out_degree": 16,
         "mutual": 13,
-        "distinct_following": 1481
+        "Following": 1499,
+        "Followers": 354298,
+        "posts": 1744
       },
       "between_centrality": 0.007205,
       "category": "趣味搞笑"
@@ -190,7 +214,9 @@
         "in_degree": 3,
         "out_degree": 14,
         "mutual": 1,
-        "distinct_following": 1746
+        "Following": 1748,
+        "Followers": 309258,
+        "posts": 8861
       },
       "between_centrality": 0.001924,
       "category": "時尚潮流,高階經理人"
@@ -205,7 +231,9 @@
         "in_degree": 10,
         "out_degree": 11,
         "mutual": 7,
-        "distinct_following": 385
+        "Following": 392,
+        "Followers": 285491,
+        "posts": 864
       },
       "between_centrality": 0.001058,
       "category": "旅遊"
@@ -220,7 +248,9 @@
         "in_degree": 10,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 150
+        "Following": 150,
+        "Followers": 782079,
+        "posts": 1841
       },
       "between_centrality": 0.0,
       "category": "運動健身,遊戲電玩,時事討論"
@@ -235,7 +265,9 @@
         "in_degree": 24,
         "out_degree": 28,
         "mutual": 24,
-        "distinct_following": 1820
+        "Following": 1832,
+        "Followers": 267433,
+        "posts": 873
       },
       "between_centrality": 0.007009,
       "category": "運動健身"
@@ -250,7 +282,9 @@
         "in_degree": 19,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 2
+        "Following": 2,
+        "Followers": 454084,
+        "posts": 476
       },
       "between_centrality": 0.0,
       "category": "趣味搞笑,表演藝術"
@@ -265,7 +299,9 @@
         "in_degree": 13,
         "out_degree": 4,
         "mutual": 4,
-        "distinct_following": 398
+        "Following": 389,
+        "Followers": 232109,
+        "posts": 1396
       },
       "between_centrality": 0.000516,
       "category": "旅遊,美食料理"
@@ -280,7 +316,9 @@
         "in_degree": 22,
         "out_degree": 22,
         "mutual": 15,
-        "distinct_following": 612
+        "Following": 624,
+        "Followers": 1031037,
+        "posts": 2996
       },
       "between_centrality": 0.018064,
       "category": "旅遊,遊戲電玩"
@@ -295,7 +333,9 @@
         "in_degree": 2,
         "out_degree": 1,
         "mutual": 1,
-        "distinct_following": 262
+        "Following": 248,
+        "Followers": 519307,
+        "posts": 586
       },
       "between_centrality": 0.0,
       "category": "表演藝術"
@@ -310,7 +350,9 @@
         "in_degree": 11,
         "out_degree": 12,
         "mutual": 7,
-        "distinct_following": 974
+        "Following": 980,
+        "Followers": 458145,
+        "posts": 1531
       },
       "between_centrality": 0.007801,
       "category": "運動健身,表演藝術"
@@ -325,7 +367,9 @@
         "in_degree": 10,
         "out_degree": 14,
         "mutual": 9,
-        "distinct_following": 1279
+        "Following": 1300,
+        "Followers": 502743,
+        "posts": 2074
       },
       "between_centrality": 0.004884,
       "category": "美妝保養,時尚潮流"
@@ -340,7 +384,9 @@
         "in_degree": 3,
         "out_degree": 2,
         "mutual": 2,
-        "distinct_following": 198
+        "Following": 198,
+        "Followers": 56940,
+        "posts": 892
       },
       "between_centrality": 4e-06,
       "category": "汽機車"
@@ -355,7 +401,9 @@
         "in_degree": 22,
         "out_degree": 19,
         "mutual": 17,
-        "distinct_following": 500
+        "Following": 501,
+        "Followers": 367960,
+        "posts": 1929
       },
       "between_centrality": 0.004916,
       "category": "美妝保養,趣味搞笑,表演藝術"
@@ -370,7 +418,9 @@
         "in_degree": 22,
         "out_degree": 34,
         "mutual": 19,
-        "distinct_following": 2245
+        "Following": 2244,
+        "Followers": 722044,
+        "posts": 8194
       },
       "between_centrality": 0.010817,
       "category": "趣味搞笑"
@@ -385,7 +435,9 @@
         "in_degree": 36,
         "out_degree": 47,
         "mutual": 34,
-        "distinct_following": 2400
+        "Following": 2416,
+        "Followers": 1036871,
+        "posts": 5232
       },
       "between_centrality": 0.040252,
       "category": "表演藝術,趣味搞笑"
@@ -400,7 +452,9 @@
         "in_degree": 10,
         "out_degree": 8,
         "mutual": 7,
-        "distinct_following": 625
+        "Following": 627,
+        "Followers": 353699,
+        "posts": 914
       },
       "between_centrality": 0.000997,
       "category": "美妝保養,旅遊,表演藝術"
@@ -415,7 +469,9 @@
         "in_degree": 5,
         "out_degree": 5,
         "mutual": 4,
-        "distinct_following": 927
+        "Following": 936,
+        "Followers": 385895,
+        "posts": 4811
       },
       "between_centrality": 0.000254,
       "category": "美妝保養,旅遊,表演藝術"
@@ -430,7 +486,9 @@
         "in_degree": 34,
         "out_degree": 46,
         "mutual": 32,
-        "distinct_following": 1600
+        "Following": 1627,
+        "Followers": 1147024,
+        "posts": 1486
       },
       "between_centrality": 0.022878,
       "category": "趣味搞笑"
@@ -445,7 +503,9 @@
         "in_degree": 35,
         "out_degree": 36,
         "mutual": 28,
-        "distinct_following": 1266
+        "Following": 1279,
+        "Followers": 615843,
+        "posts": 1637
       },
       "between_centrality": 0.020846,
       "category": "美妝保養,時尚潮流"
@@ -460,7 +520,9 @@
         "in_degree": 1,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 69
+        "Following": 69,
+        "Followers": 2450201,
+        "posts": 3853
       },
       "between_centrality": 0.0,
       "category": "表演藝術"
@@ -475,7 +537,9 @@
         "in_degree": 29,
         "out_degree": 28,
         "mutual": 20,
-        "distinct_following": 1104
+        "Following": 1133,
+        "Followers": 368477,
+        "posts": 1839
       },
       "between_centrality": 0.016642,
       "category": "趣味搞笑"
@@ -490,7 +554,9 @@
         "in_degree": 10,
         "out_degree": 13,
         "mutual": 8,
-        "distinct_following": 596
+        "Following": 595,
+        "Followers": 229384,
+        "posts": 1147
       },
       "between_centrality": 0.000186,
       "category": "旅遊,趣味搞笑"
@@ -505,7 +571,9 @@
         "in_degree": 0,
         "out_degree": 2,
         "mutual": 0,
-        "distinct_following": 1689
+        "Following": 0,
+        "Followers": 0,
+        "posts": 0
       },
       "between_centrality": 0.0,
       "category": "時尚潮流,表演藝術"
@@ -520,7 +588,9 @@
         "in_degree": 19,
         "out_degree": 20,
         "mutual": 18,
-        "distinct_following": 558
+        "Following": 560,
+        "Followers": 1106945,
+        "posts": 1524
       },
       "between_centrality": 0.004148,
       "category": "時尚潮流"
@@ -535,7 +605,9 @@
         "in_degree": 6,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 20
+        "Following": 20,
+        "Followers": 556578,
+        "posts": 9183
       },
       "between_centrality": 0.0,
       "category": "趣味搞笑"
@@ -550,7 +622,9 @@
         "in_degree": 37,
         "out_degree": 24,
         "mutual": 23,
-        "distinct_following": 590
+        "Following": 593,
+        "Followers": 563686,
+        "posts": 3373
       },
       "between_centrality": 0.022631,
       "category": "美妝保養,時尚潮流,旅遊"
@@ -565,7 +639,9 @@
         "in_degree": 19,
         "out_degree": 24,
         "mutual": 15,
-        "distinct_following": 477
+        "Following": 479,
+        "Followers": 292906,
+        "posts": 3279
       },
       "between_centrality": 0.01211,
       "category": "美食料理,寵物,遊戲電玩"
@@ -580,7 +656,9 @@
         "in_degree": 26,
         "out_degree": 21,
         "mutual": 21,
-        "distinct_following": 572
+        "Following": 579,
+        "Followers": 432539,
+        "posts": 1800
       },
       "between_centrality": 0.022079,
       "category": "遊戲電玩,表演藝術,趣味搞笑"
@@ -595,7 +673,9 @@
         "in_degree": 17,
         "out_degree": 46,
         "mutual": 16,
-        "distinct_following": 1318
+        "Following": 1325,
+        "Followers": 621595,
+        "posts": 180
       },
       "between_centrality": 0.009393,
       "category": "知識教育,趣味搞笑"
@@ -610,7 +690,9 @@
         "in_degree": 25,
         "out_degree": 14,
         "mutual": 14,
-        "distinct_following": 563
+        "Following": 566,
+        "Followers": 308928,
+        "posts": 888
       },
       "between_centrality": 0.017433,
       "category": "趣味搞笑"
@@ -625,7 +707,9 @@
         "in_degree": 2,
         "out_degree": 3,
         "mutual": 2,
-        "distinct_following": 195
+        "Following": 196,
+        "Followers": 536194,
+        "posts": 551
       },
       "between_centrality": 0.0,
       "category": "時尚潮流,遊戲電玩"
@@ -640,7 +724,9 @@
         "in_degree": 30,
         "out_degree": 32,
         "mutual": 29,
-        "distinct_following": 940
+        "Following": 943,
+        "Followers": 779766,
+        "posts": 2044
       },
       "between_centrality": 0.011456,
       "category": "美食料理,表演藝術,趣味搞笑"
@@ -655,7 +741,9 @@
         "in_degree": 9,
         "out_degree": 10,
         "mutual": 9,
-        "distinct_following": 674
+        "Following": 682,
+        "Followers": 351680,
+        "posts": 2093
       },
       "between_centrality": 0.012075,
       "category": "表演藝術"
@@ -670,7 +758,9 @@
         "in_degree": 29,
         "out_degree": 29,
         "mutual": 25,
-        "distinct_following": 352
+        "Following": 352,
+        "Followers": 642973,
+        "posts": 2147
       },
       "between_centrality": 0.008905,
       "category": "趣味搞笑"
@@ -685,7 +775,9 @@
         "in_degree": 40,
         "out_degree": 42,
         "mutual": 30,
-        "distinct_following": 4006
+        "Following": 4032,
+        "Followers": 415002,
+        "posts": 1855
       },
       "between_centrality": 0.035839,
       "category": "遊戲電玩"
@@ -700,7 +792,9 @@
         "in_degree": 9,
         "out_degree": 11,
         "mutual": 8,
-        "distinct_following": 943
+        "Following": 950,
+        "Followers": 206043,
+        "posts": 1901
       },
       "between_centrality": 0.006673,
       "category": "運動健身"
@@ -715,7 +809,9 @@
         "in_degree": 19,
         "out_degree": 21,
         "mutual": 18,
-        "distinct_following": 445
+        "Following": 447,
+        "Followers": 236458,
+        "posts": 2155
       },
       "between_centrality": 0.00907,
       "category": "遊戲電玩"
@@ -730,7 +826,9 @@
         "in_degree": 15,
         "out_degree": 9,
         "mutual": 5,
-        "distinct_following": 159
+        "Following": 159,
+        "Followers": 1050878,
+        "posts": 4550
       },
       "between_centrality": 0.002719,
       "category": "寵物"
@@ -745,7 +843,9 @@
         "in_degree": 5,
         "out_degree": 5,
         "mutual": 2,
-        "distinct_following": 116
+        "Following": 116,
+        "Followers": 391889,
+        "posts": 2560
       },
       "between_centrality": 0.000215,
       "category": "表演藝術"
@@ -760,7 +860,9 @@
         "in_degree": 10,
         "out_degree": 15,
         "mutual": 8,
-        "distinct_following": 291
+        "Following": 291,
+        "Followers": 2136350,
+        "posts": 1735
       },
       "between_centrality": 0.003331,
       "category": "表演藝術"
@@ -775,7 +877,9 @@
         "in_degree": 6,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 0
+        "Following": 0,
+        "Followers": 105966,
+        "posts": 1056
       },
       "between_centrality": 0.0,
       "category": "寵物"
@@ -790,7 +894,9 @@
         "in_degree": 1,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 242
+        "Following": 243,
+        "Followers": 205261,
+        "posts": 1473
       },
       "between_centrality": 0.0,
       "category": "旅遊"
@@ -805,7 +911,9 @@
         "in_degree": 9,
         "out_degree": 11,
         "mutual": 9,
-        "distinct_following": 300
+        "Following": 301,
+        "Followers": 102766,
+        "posts": 554
       },
       "between_centrality": 0.000702,
       "category": "旅遊,美食料理"
@@ -820,7 +928,9 @@
         "in_degree": 36,
         "out_degree": 40,
         "mutual": 31,
-        "distinct_following": 496
+        "Following": 500,
+        "Followers": 350257,
+        "posts": 1809
       },
       "between_centrality": 0.029991,
       "category": "寵物,遊戲電玩,趣味搞笑"
@@ -835,7 +945,9 @@
         "in_degree": 6,
         "out_degree": 5,
         "mutual": 5,
-        "distinct_following": 639
+        "Following": 489,
+        "Followers": 11113,
+        "posts": 113
       },
       "between_centrality": 8.5e-05,
       "category": "表演藝術,趣味搞笑"
@@ -850,7 +962,9 @@
         "in_degree": 33,
         "out_degree": 28,
         "mutual": 25,
-        "distinct_following": 700
+        "Following": 703,
+        "Followers": 774220,
+        "posts": 4245
       },
       "between_centrality": 0.016039,
       "category": "旅遊,家庭母嬰"
@@ -865,7 +979,9 @@
         "in_degree": 5,
         "out_degree": 12,
         "mutual": 2,
-        "distinct_following": 397
+        "Following": 399,
+        "Followers": 283652,
+        "posts": 1453
       },
       "between_centrality": 0.001163,
       "category": "知識教育"
@@ -880,7 +996,9 @@
         "in_degree": 13,
         "out_degree": 21,
         "mutual": 11,
-        "distinct_following": 207
+        "Following": 208,
+        "Followers": 415007,
+        "posts": 922
       },
       "between_centrality": 0.004921,
       "category": "表演藝術,趣味搞笑"
@@ -895,7 +1013,9 @@
         "in_degree": 6,
         "out_degree": 1,
         "mutual": 0,
-        "distinct_following": 87
+        "Following": 87,
+        "Followers": 1484140,
+        "posts": 6816
       },
       "between_centrality": 8.9e-05,
       "category": "影視評論"
@@ -910,7 +1030,9 @@
         "in_degree": 13,
         "out_degree": 27,
         "mutual": 11,
-        "distinct_following": 1569
+        "Following": 1612,
+        "Followers": 180562,
+        "posts": 1950
       },
       "between_centrality": 0.007126,
       "category": "綜合其他"
@@ -925,7 +1047,9 @@
         "in_degree": 5,
         "out_degree": 5,
         "mutual": 3,
-        "distinct_following": 34
+        "Following": 34,
+        "Followers": 433921,
+        "posts": 2242
       },
       "between_centrality": 0.000259,
       "category": "寵物"
@@ -940,7 +1064,9 @@
         "in_degree": 48,
         "out_degree": 30,
         "mutual": 28,
-        "distinct_following": 500
+        "Following": 501,
+        "Followers": 1495461,
+        "posts": 8178
       },
       "between_centrality": 0.031814,
       "category": "趣味搞笑"
@@ -955,7 +1081,9 @@
         "in_degree": 19,
         "out_degree": 27,
         "mutual": 17,
-        "distinct_following": 2828
+        "Following": 2830,
+        "Followers": 742233,
+        "posts": 1066
       },
       "between_centrality": 0.010611,
       "category": "表演藝術,趣味搞笑"
@@ -970,7 +1098,9 @@
         "in_degree": 36,
         "out_degree": 51,
         "mutual": 35,
-        "distinct_following": 921
+        "Following": 925,
+        "Followers": 458424,
+        "posts": 1177
       },
       "between_centrality": 0.04908,
       "category": "表演藝術,趣味搞笑"
@@ -985,7 +1115,9 @@
         "in_degree": 18,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 15
+        "Following": 15,
+        "Followers": 634322,
+        "posts": 2377
       },
       "between_centrality": 0.0,
       "category": "趣味搞笑"
@@ -1000,7 +1132,9 @@
         "in_degree": 14,
         "out_degree": 12,
         "mutual": 7,
-        "distinct_following": 217
+        "Following": 9,
+        "Followers": 205735,
+        "posts": 472
       },
       "between_centrality": 0.002319,
       "category": "美食料理,寵物"
@@ -1015,7 +1149,9 @@
         "in_degree": 9,
         "out_degree": 1,
         "mutual": 1,
-        "distinct_following": 42
+        "Following": 3,
+        "Followers": 1030978,
+        "posts": 3146
       },
       "between_centrality": 0.000117,
       "category": "趣味搞笑,家庭母嬰,表演藝術"
@@ -1030,7 +1166,9 @@
         "in_degree": 1,
         "out_degree": 2,
         "mutual": 1,
-        "distinct_following": 433
+        "Following": 440,
+        "Followers": 150544,
+        "posts": 2917
       },
       "between_centrality": 0.0,
       "category": "表演藝術"
@@ -1045,7 +1183,9 @@
         "in_degree": 9,
         "out_degree": 20,
         "mutual": 8,
-        "distinct_following": 1251
+        "Following": 1267,
+        "Followers": 115573,
+        "posts": 3181
       },
       "between_centrality": 0.005029,
       "category": "旅遊,家庭母嬰,帶貨分潤"
@@ -1060,7 +1200,9 @@
         "in_degree": 3,
         "out_degree": 1,
         "mutual": 0,
-        "distinct_following": 141
+        "Following": 142,
+        "Followers": 187869,
+        "posts": 1329
       },
       "between_centrality": 0.0,
       "category": "知識教育"
@@ -1075,7 +1217,9 @@
         "in_degree": 10,
         "out_degree": 22,
         "mutual": 10,
-        "distinct_following": 693
+        "Following": 697,
+        "Followers": 221940,
+        "posts": 1350
       },
       "between_centrality": 0.019633,
       "category": "表演藝術"
@@ -1090,7 +1234,9 @@
         "in_degree": 20,
         "out_degree": 17,
         "mutual": 15,
-        "distinct_following": 991
+        "Following": 993,
+        "Followers": 834659,
+        "posts": 2961
       },
       "between_centrality": 0.005798,
       "category": "家庭母嬰"
@@ -1105,7 +1251,9 @@
         "in_degree": 3,
         "out_degree": 3,
         "mutual": 3,
-        "distinct_following": 219
+        "Following": 219,
+        "Followers": 188512,
+        "posts": 3341
       },
       "between_centrality": 0.000173,
       "category": "美食料理"
@@ -1120,7 +1268,9 @@
         "in_degree": 3,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 1
+        "Following": 1,
+        "Followers": 390092,
+        "posts": 313
       },
       "between_centrality": 0.0,
       "category": "時事討論"
@@ -1135,7 +1285,9 @@
         "in_degree": 9,
         "out_degree": 12,
         "mutual": 7,
-        "distinct_following": 1127
+        "Following": 1129,
+        "Followers": 183273,
+        "posts": 1888
       },
       "between_centrality": 0.004636,
       "category": "美食料理,旅遊"
@@ -1150,7 +1302,9 @@
         "in_degree": 3,
         "out_degree": 3,
         "mutual": 2,
-        "distinct_following": 810
+        "Following": 813,
+        "Followers": 296216,
+        "posts": 5694
       },
       "between_centrality": 0.00044,
       "category": "美妝保養,時尚潮流,帶貨分潤"
@@ -1165,7 +1319,9 @@
         "in_degree": 13,
         "out_degree": 9,
         "mutual": 6,
-        "distinct_following": 621
+        "Following": 624,
+        "Followers": 308786,
+        "posts": 1922
       },
       "between_centrality": 0.004282,
       "category": "表演藝術,時尚潮流,家庭母嬰"
@@ -1180,7 +1336,9 @@
         "in_degree": 22,
         "out_degree": 35,
         "mutual": 15,
-        "distinct_following": 2823
+        "Following": 2827,
+        "Followers": 573741,
+        "posts": 2892
       },
       "between_centrality": 0.055387,
       "category": "時尚潮流,美食料理"
@@ -1195,7 +1353,9 @@
         "in_degree": 2,
         "out_degree": 2,
         "mutual": 2,
-        "distinct_following": 76
+        "Following": 76,
+        "Followers": 285219,
+        "posts": 3628
       },
       "between_centrality": 0.0,
       "category": "美食料理"
@@ -1210,7 +1370,9 @@
         "in_degree": 16,
         "out_degree": 12,
         "mutual": 6,
-        "distinct_following": 70
+        "Following": 71,
+        "Followers": 342007,
+        "posts": 817
       },
       "between_centrality": 0.000792,
       "category": "旅遊"
@@ -1225,7 +1387,9 @@
         "in_degree": 3,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 16
+        "Following": 16,
+        "Followers": 151837,
+        "posts": 13237
       },
       "between_centrality": 0.0,
       "category": "運動健身"
@@ -1240,7 +1404,9 @@
         "in_degree": 41,
         "out_degree": 7,
         "mutual": 5,
-        "distinct_following": 103
+        "Following": 103,
+        "Followers": 523443,
+        "posts": 1921
       },
       "between_centrality": 0.012243,
       "category": "趣味搞笑"
@@ -1255,7 +1421,9 @@
         "in_degree": 18,
         "out_degree": 25,
         "mutual": 16,
-        "distinct_following": 744
+        "Following": 751,
+        "Followers": 138411,
+        "posts": 1529
       },
       "between_centrality": 0.008737,
       "category": "知識教育"
@@ -1270,7 +1438,9 @@
         "in_degree": 32,
         "out_degree": 29,
         "mutual": 21,
-        "distinct_following": 446
+        "Following": 448,
+        "Followers": 648553,
+        "posts": 1154
       },
       "between_centrality": 0.011663,
       "category": "寵物,旅遊,美食料理"
@@ -1285,7 +1455,9 @@
         "in_degree": 6,
         "out_degree": 18,
         "mutual": 4,
-        "distinct_following": 93
+        "Following": 93,
+        "Followers": 76276,
+        "posts": 21
       },
       "between_centrality": 0.000577,
       "category": "帶貨分潤"
@@ -1300,7 +1472,9 @@
         "in_degree": 22,
         "out_degree": 2,
         "mutual": 2,
-        "distinct_following": 59
+        "Following": 61,
+        "Followers": 1150147,
+        "posts": 4238
       },
       "between_centrality": 5.1e-05,
       "category": "家庭母嬰,趣味搞笑"
@@ -1315,7 +1489,9 @@
         "in_degree": 13,
         "out_degree": 23,
         "mutual": 13,
-        "distinct_following": 762
+        "Following": 764,
+        "Followers": 178445,
+        "posts": 1374
       },
       "between_centrality": 0.0124,
       "category": "遊戲電玩"
@@ -1330,7 +1506,9 @@
         "in_degree": 1,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 96
+        "Following": 96,
+        "Followers": 100432,
+        "posts": 5489
       },
       "between_centrality": 0.0,
       "category": "遊戲電玩"
@@ -1345,7 +1523,9 @@
         "in_degree": 31,
         "out_degree": 21,
         "mutual": 20,
-        "distinct_following": 719
+        "Following": 726,
+        "Followers": 338714,
+        "posts": 985
       },
       "between_centrality": 0.009695,
       "category": "趣味搞笑,時事討論"
@@ -1360,7 +1540,9 @@
         "in_degree": 8,
         "out_degree": 11,
         "mutual": 6,
-        "distinct_following": 87
+        "Following": 87,
+        "Followers": 166174,
+        "posts": 3099
       },
       "between_centrality": 0.000294,
       "category": "3C科技"
@@ -1375,7 +1557,9 @@
         "in_degree": 43,
         "out_degree": 25,
         "mutual": 21,
-        "distinct_following": 501
+        "Following": 515,
+        "Followers": 1002519,
+        "posts": 1801
       },
       "between_centrality": 0.024021,
       "category": "趣味搞笑"
@@ -1390,7 +1574,9 @@
         "in_degree": 14,
         "out_degree": 29,
         "mutual": 12,
-        "distinct_following": 1092
+        "Following": 1092,
+        "Followers": 335359,
+        "posts": 2719
       },
       "between_centrality": 0.006395,
       "category": "趣味搞笑"
@@ -1405,7 +1591,9 @@
         "in_degree": 2,
         "out_degree": 3,
         "mutual": 0,
-        "distinct_following": 412
+        "Following": 416,
+        "Followers": 76496,
+        "posts": 797
       },
       "between_centrality": 5.8e-05,
       "category": "美食料理"
@@ -1420,7 +1608,9 @@
         "in_degree": 19,
         "out_degree": 0,
         "mutual": 0,
-        "distinct_following": 2
+        "Following": 2,
+        "Followers": 257954,
+        "posts": 1232
       },
       "between_centrality": 0.0,
       "category": "美妝保養,時尚潮流,趣味搞笑"
@@ -1435,7 +1625,9 @@
         "in_degree": 43,
         "out_degree": 39,
         "mutual": 35,
-        "distinct_following": 962
+        "Following": 974,
+        "Followers": 891802,
+        "posts": 1002
       },
       "between_centrality": 0.029612,
       "category": "美食料理"
@@ -1450,7 +1642,9 @@
         "in_degree": 22,
         "out_degree": 30,
         "mutual": 20,
-        "distinct_following": 472
+        "Following": 473,
+        "Followers": 708449,
+        "posts": 1411
       },
       "between_centrality": 0.009713,
       "category": "趣味搞笑"
@@ -1465,7 +1659,9 @@
         "in_degree": 5,
         "out_degree": 15,
         "mutual": 3,
-        "distinct_following": 176
+        "Following": 176,
+        "Followers": 95629,
+        "posts": 656
       },
       "between_centrality": 0.000897,
       "category": "知識教育,理財創業"
