@@ -54,6 +54,14 @@
                         📊
                         <span class="mobile-disable text-sm">報表</span>
                     </button>
+
+                    <button
+                        onclick="switchTab('cluster')"
+                        id="btn-cluster"
+                        class="py-2 px-1 text-lg font-medium text-slate-400 transition-all"
+                    >
+                        🍱 <span class="mobile-disable text-sm">分群比較</span>
+                    </button>
                 </nav>
             </div>
 
@@ -179,6 +187,12 @@
                     ></div>
                 </div>
             </div>
+
+            <div
+                id="tab-cluster"
+                class="hidden w-full overflow-x-auto bg-slate-900/20"
+                style="height: calc(100vh - 80px)"
+            ></div>
         </main>
 
         <!-- <script src="__main.js"></script> -->

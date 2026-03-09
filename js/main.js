@@ -12,6 +12,8 @@ import {
     renderMetricsTable,
 } from "./report.js";
 
+import { renderClusterComparisonView } from "./statistic.js";
+
 // ==========================================
 // 全域狀態 (State)
 // ==========================================
@@ -97,8 +99,20 @@ async function switchAlgorithm(algoKey) {
 
         // 【關鍵：補上這行】渲染左側分群圖例
         renderLegend(communityData, gData);
+        // [新增] 如果目前在分群比較頁面，切換演算法也要同步更新圖表
+        if (
+            !document.getElementById("tab-cluster").classList.contains("hidden")
+        ) {
+            renderClusterComparisonView();
+        }
     } catch (error) {
         console.error("載入失敗:", error);
+        // [新增] 如果目前在分群比較頁面，切換演算法也要同步更新圖表
+        if (
+            !document.getElementById("tab-cluster").classList.contains("hidden")
+        ) {
+            renderClusterComparisonView();
+        }
     }
 }
 
@@ -111,26 +125,38 @@ window.handleSearch = () => handleSearch(gData);
 
 window.switchAlgorithm = switchAlgorithm;
 
+// [關鍵修復] 將資料透過 getter 掛載到全域，解決 statistic.js 找不到函式的問題
+window.getCommunityData = () => communityData;
+
+// 修改 switchTab 函式
 window.switchTab = (tab) => {
+    const isNetwork = tab === "network";
+    const isReport = tab === "data-report";
+    const isCluster = tab === "cluster";
+
+    // 切換分頁顯示
     document
         .getElementById("tab-network")
-        .classList.toggle("hidden", tab !== "network");
+        .classList.toggle("hidden", !isNetwork);
+    document.getElementById("tab-matrix").classList.toggle("hidden", !isReport);
     document
-        .getElementById("tab-matrix")
-        .classList.toggle("hidden", tab !== "data-report");
+        .getElementById("tab-cluster")
+        .classList.toggle("hidden", !isCluster);
+
+    // 切換按鈕樣式 (修正原本 heatmap 的命名不一致問題)
     document
         .getElementById("btn-network")
-        .classList.toggle("tab-active", tab === "network");
+        .classList.toggle("tab-active", isNetwork);
     document
         .getElementById("btn-data-report")
-        .classList.toggle("tab-active", tab === "heatmap");
+        .classList.toggle("tab-active", isReport);
+    document
+        .getElementById("btn-cluster")
+        ?.classList.toggle("tab-active", isCluster);
 
-    const isNetwork = tab === "network";
+    // 控制工具列與搜尋框
     document
         .getElementById("btn-legend-open")
-        .classList.toggle("hidden", !isNetwork);
-    document
-        .getElementById("switch-algorithm")
         .classList.toggle("hidden", !isNetwork);
     document
         .getElementById("legend-panel")
@@ -138,6 +164,16 @@ window.switchTab = (tab) => {
     document
         .getElementById("search-section")
         .classList.toggle("hidden", !isNetwork);
+
+    // 演算法選擇器在網路和分群比較時都要顯示
+    document
+        .getElementById("switch-algorithm")
+        .classList.toggle("hidden", isReport);
+
+    // 如果進入分群比較分頁，執行渲染
+    if (isCluster) {
+        renderClusterComparisonView();
+    }
 };
 
 window.focusNodeByName = (name) => {

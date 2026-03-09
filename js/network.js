@@ -1,6 +1,5 @@
 // [新增] 引入數據與顏色配置
-import { metricsData } from "./report.js";
-import { CATEGORY_COLORS } from "./config.js";
+import { renderClusterAnalysis } from "./statistic.js";
 
 // 導入共用變數與資料
 let graphInstance = null;
@@ -110,7 +109,7 @@ export function initNetwork(gData) {
     graphInstance = ForceGraph()(elem)
         .graphData(gData)
         .nodeId("id")
-        .cooldownTicks(500) // 讓引擎只跑 100 次迭代就強制停止，避免跑太久
+        .cooldownTicks(800) // 讓引擎只跑 100 次迭代就強制停止，避免跑太久
         .onEngineStop(() => {
             // --- 關鍵：鎖定座標 ---
             // 當引擎停止時，把目前的座標固定住，這樣後續觸發 graphData 也不會再晃動
@@ -340,12 +339,18 @@ export function renderLegend(communityData, gData) {
                 <td colspan="5" class="p-0">
                     <div id="accordion-${index}" class="accordion-content text-xs text-white bg-slate-900/50">
                         <div id="stats-container-${index}" class="p-4 border-b border-slate-700 hidden">
-                            <div class="text-blue-400 font-bold mb-2">網紅類別統計</div>
+                            <div class="text-blue-400 font-bold mb-2">分群數據統計</div>
                             <div class="flex flex-col gap-4">
-                                <div id="chart-${index}" class="w-full h-64"></div>
+                                <div id="chart-${index}" class="w-full h-56"></div>
+                                
+                                <div id="posts-chart-${index}" class="w-full"></div>
+                                <div id="followers-chart-${index}" class="w-full"></div>
+                                <div id="following-chart-${index}" class="w-full"></div>
+                                
                                 <div id="top5-${index}" class="w-full bg-slate-800/50 rounded p-2"></div>
                             </div>
                         </div>
+
                         <div class="p-4 leading-relaxed">
                             <div class="text-slate-400 mb-1">成員名單：</div>
                             ${sortedMembers}
@@ -370,98 +375,10 @@ window.toggleAccordion = (index, members) => {
 
     if (isExpanding && statsContainer) {
         statsContainer.classList.remove("hidden");
-        renderGroupStats(index, members);
+        // 呼叫新模組的進入點
+        renderClusterAnalysis(index, members);
     }
 };
-
-// [新增] 核心統計與繪圖函式
-function renderGroupStats(index, members) {
-    // 1. 篩選出該群組成員的資料
-    const groupMetrics = metricsData.filter((d) =>
-        members.includes(d.Person_Name),
-    );
-
-    // 2. 統計類別 (處理 "類別1,類別2" 的情況)
-    const catCounts = {};
-    groupMetrics.forEach((d) => {
-        const cats = String(d.category || "未分類")
-            .split(",")
-            .map((c) => c.trim());
-        cats.forEach((c) => {
-            if (c) catCounts[c] = (catCounts[c] || 0) + 1;
-        });
-    });
-
-    // 3. 格式化數據
-    const total = Object.values(catCounts).reduce((a, b) => a + b, 0);
-    const sortedCats = Object.entries(catCounts)
-        .sort((a, b) => b[1] - a[1]) // 依照數量由高到低
-        .map(([name, count]) => ({
-            name,
-            count,
-            percentage: ((count / total) * 100).toFixed(1),
-        }));
-
-    // 4. 繪製 Plotly 圓餅圖
-    const plotData = [
-        {
-            values: sortedCats.map((d) => d.count),
-            labels: sortedCats.map((d) => d.name),
-            type: "pie",
-            hole: 0.4,
-            marker: {
-                colors: sortedCats.map(
-                    (d) =>
-                        CATEGORY_COLORS[d.name] || CATEGORY_COLORS["default"],
-                ),
-            },
-            textinfo: "label",
-            hoverinfo: "label+value+percent",
-            automargin: true,
-        },
-    ];
-
-    const layout = {
-        showlegend: false,
-        paper_bgcolor: "rgba(0,0,0,0)",
-        plot_bgcolor: "rgba(0,0,0,0)",
-        font: { color: "#cbd5e1", size: 10 },
-        margin: { t: 10, b: 10, l: 10, r: 10 },
-        height: 250,
-    };
-
-    Plotly.newPlot(`chart-${index}`, plotData, layout, {
-        displayModeBar: false,
-    });
-
-    // 5. 渲染 Top 5 表格
-    const top5Html = `
-        <table class="w-full text-[10px] text-left">
-            <thead>
-                <tr class="text-slate-500 border-b border-slate-700">
-                    <th class="pb-1">排名</th>
-                    <th class="pb-1">類別</th>
-                    <th class="pb-1 text-right">占比</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${sortedCats
-                    .slice(0, 5)
-                    .map(
-                        (d, i) => `
-                    <tr class="border-b border-slate-700/50">
-                        <td class="py-1">${i + 1}</td>
-                        <td class="py-1 text-blue-300">${d.name} (${d.count})</td>
-                        <td class="py-1 text-right text-slate-400">${d.percentage}%</td>
-                    </tr>
-                `,
-                    )
-                    .join("")}
-            </tbody>
-        </table>
-    `;
-    document.getElementById(`top5-${index}`).innerHTML = top5Html;
-}
 
 window.toggleLegend = () => {
     const panel = document.getElementById("legend-panel");
