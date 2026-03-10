@@ -61,7 +61,7 @@ async function switchAlgorithm(algoKey) {
                     `./Output/Louvain/nodes_edges_lv.json?v=${timestamp}`,
                 ).then((r) => r.json()),
                 fetch(
-                    `./Output/WalkTrap/nodes_edges_wt.json?v=${timestamp}`,
+                    `./Output/Walktrap/nodes_edges_wt.json?v=${timestamp}`,
                 ).then((r) => (r.ok ? r.json() : { nodes: [] })),
                 fetch(
                     `${config.path}community_grouping_report_final${config.suffix}.csv?v=${timestamp}`,
