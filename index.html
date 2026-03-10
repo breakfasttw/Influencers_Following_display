@@ -7,7 +7,7 @@
             name="description"
             content="Influencers social network cluster demo site"
         />
-        <title>Social Network Lab</title>
+        <title>IG Following</title>
         <script src="https://unpkg.com/force-graph"></script>
         <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
@@ -20,21 +20,24 @@
     </head>
     <body class="flex flex-col">
         <header
-            class="relative z-50 py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
+            class="z-50 py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 bg-slate-900 border-b border-slate-800 flex justify-between items-center"
         >
             <div class="flex items-center space-x-6">
                 <div>
                     <h1 class="text-md font-bold text-blue-400 mobile-disable">
-                        Social Network Lab
+                        <a
+                            href="https://breakfasttw.github.io/Influencers_Following_display/"
+                            >IG ✔ Following</a
+                        >
                     </h1>
                     <p class="text-xs text-slate-500 mobile-disable">
-                        Influencers Interactive Demo
+                         Demo Site
                     </p>
                 </div>
                 <div class="text-sm font-bold text-blue-600">
                     <a
                         href="https://breakfasttw.github.io/Influencers_Vedio_Tags_ig_display/"
-                        >Tags</a
+                        >＠ Tags</a
                     >
                 </div>
                 <nav class="flex space-x-2 lg:space-x-4 ml-4">
@@ -63,6 +66,24 @@
                         🍱 <span class="mobile-disable text-sm">分群比較</span>
                     </button>
                 </nav>
+
+                <div
+                    id="switch-algorithm"
+                    class="flex items-center gap-2 bg-slate-700/50 px-1 py-1 rounded-lg border border-slate-600"
+                >
+                    <label for="algo-selector" class="text-xs text-slate-400 px-1"
+                        >演算法:</label
+                    >
+                    <select
+                        id="algo-selector"
+                        onchange="switchAlgorithm(this.value)"
+                        class="pr-6 bg-transparent text-sm text-blue-300 outline-none cursor-pointer"
+                    >
+                        <option value="louvain">Louvain</option>
+                        <option value="greedy">Greedy Modularity</option>
+                        <option value="walktrap">WalkTrap</option>
+                    </select>
+                </div>
             </div>
 
             <div
@@ -88,29 +109,11 @@
             </div>
         </header>
 
-        <main class="flex-grow relative p-4">
-            <div
-                id="switch-algorithm"
-                class="absolute z-50 top-4 right-4 flex items-center gap-2 bg-slate-700/50 px-3 py-1 rounded-lg border border-slate-600"
-            >
-                <label for="algo-selector" class="text-xs text-slate-400"
-                    >演算法:</label
-                >
-                <select
-                    id="algo-selector"
-                    onchange="switchAlgorithm(this.value)"
-                    class="pr-6 bg-transparent text-sm text-blue-300 outline-none cursor-pointer"
-                >
-                    <option value="louvain">Louvain</option>
-                    <option value="greedy">Greedy Modularity</option>
-                    <option value="walktrap">WalkTrap</option>
-                </select>
-            </div>
-
+        <main class="flex-grow relative px-4 py-1">
             <button
                 id="btn-legend-open"
                 onclick="toggleLegend()"
-                class="absolute top-4 left-4 z-50 bg-slate-700/90 hover:bg-blue-600 text-white p-2 p-md-3 shadow-lg transition-all border border-slate-600"
+                class="absolute top-2 left-4 z-50 bg-slate-700/90 hover:bg-blue-600 text-white p-2 p-md-3 shadow-lg transition-all border border-slate-600"
                 title="顯示分群圖例"
             >
                 📊 <span class="text-xs ml-1 mobile-disable">圖例</span>
@@ -151,14 +154,14 @@
                     class="w-full h-full bg-slate-800 rounded-xl overflow-hidden shadow-2xl"
                 ></div>
                 <div
-                    class="absolute bottom-8 right-8 flex flex-row gap-2 lg:flex-col space-y-2"
+                    class="absolute bottom-8 right-8 flex flex-row gap-2 lg:flex-row space-y-2"
                 >
                     <button
                         onclick="unlockNodes()"
-                        class="bg-red-500/80 hover:bg-red-600 p-2 rounded-lg text-xs backdrop-blur-md text-white"
+                        class="bg-red-500/80 hover:bg-red-600 p-1 rounded-lg text-xs backdrop-blur-md text-white"
                     >
                         🔓
-                        <span class="mobile-disable">解除選擇</span>
+                        <span class="mobile-disable">取消選取</span>
                     </button>
                     <button
                         onclick="resetView()"

@@ -186,11 +186,15 @@ export function renderClusterComparisonView() {
     const container = document.getElementById("tab-cluster");
     if (!container) return;
 
-    const rawCommunityData = window.getCommunityData ? window.getCommunityData() : [];
-    const validCommunities = rawCommunityData.filter((c) => c.name !== "0-Degree");
+    const rawCommunityData = window.getCommunityData
+        ? window.getCommunityData()
+        : [];
+    const validCommunities = rawCommunityData.filter(
+        (c) => c.name !== "0-Degree",
+    );
 
     let html = `
-        <div class="flex flex-row overflow-x-auto min-w-full p-6 gap-6 h-full items-start">
+        <div class="flex flex-row overflow-x-auto min-w-full px-6 gap-6 h-full items-start">
             <div class="flex flex-col gap-6 p-4 bg-slate-900/80 rounded-xl border border-slate-700/30 w-28 shrink-0 shadow-lg">
                 <div class="sticky top-0 z-40 bg-slate-900 h-[60px] -mt-4 -mx-4 mb-4 border-b border-slate-700"></div>
                 
@@ -210,7 +214,7 @@ export function renderClusterComparisonView() {
                 
                 <div class="sticky top-0 z-30 -mt-6 -mx-6 mb-2 bg-slate-900 border-b border-slate-700">
                     <div class="relative group py-4 text-blue-400 font-black text-center cursor-help">
-                        Group ${comm.name} <span class="text-xs font-normal text-slate-500 ml-1">(${comm.count}人)</span>
+                        Group ${comm.name} <span class="text-xs font-normal text-white ml-1">(${comm.count}人)</span>
                         
                         <div class="member-tooltip">
                             <div class="text-blue-400 font-bold mb-2 border-b border-slate-700 pb-1 text-left">網紅名單 (${comm.count})</div>
@@ -230,12 +234,15 @@ export function renderClusterComparisonView() {
 
     html += `</div>`;
     container.innerHTML = html;
-    
+
     // 繪圖邏輯保持不變...
     requestAnimationFrame(() => {
         validCommunities.forEach((comm, idx) => {
-            const groupMetrics = metricsData.filter((d) => comm.members.includes(d.Person_Name));
-            if (groupMetrics.length > 0) drawComparisonCharts(idx, groupMetrics);
+            const groupMetrics = metricsData.filter((d) =>
+                comm.members.includes(d.Person_Name),
+            );
+            if (groupMetrics.length > 0)
+                drawComparisonCharts(idx, groupMetrics);
         });
     });
 }
