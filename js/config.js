@@ -4,7 +4,7 @@
 export const ALGO_CONFIG = {
     greedy: { name: "Greedy", path: "./Output/", suffix: "_gd" },
     louvain: { name: "Louvain", path: "./Output/Louvain/", suffix: "_lv" },
-    walktrap: { name: "WalkTrap", path: "./Output/WalkTrap/", suffix: "_wt" },
+    walktrap: { name: "Walktrap", path: "./Output/Walktrap/", suffix: "_wt" },
 };
 
 // ==========================================
