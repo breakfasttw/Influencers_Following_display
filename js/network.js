@@ -130,11 +130,12 @@ export function initNetwork(gData) {
                 被追蹤數：<span style="color: #f8fafc">${node.metrics.in_degree}</span><br/>
                 追蹤他人：<span style="color: #f8fafc">${node.metrics.out_degree}</span><br/>
                 雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span><br/>
-                中介度：<span style="color: #f8fafc">${(node.between_centrality * 100).toFixed(2) + "%"}</span><br/>
-                總粉絲數：<span style="color: #f8fafc">${node.metrics.Followers.toLocaleString()}</span><br/>
-                總追蹤他人：<span style="color: #f8fafc">${node.metrics.Following.toLocaleString()}</span><br/>
-                總貼文數：<span style="color: #f8fafc">${node.metrics.posts.toLocaleString()}</span><br/>
+                中介度：<span style="color: #f8fafc">${((node.metrics.between_centrality || 0) * 100).toFixed(2) + "%"}</span><br/>
+                總粉絲數：<span style="color: #f8fafc">${(node.Followers || 0).toLocaleString()}</span><br/>
+                總追蹤他人：<span style="color: #f8fafc">${(node.Following || 0).toLocaleString()}</span><br/>
+                總貼文數：<span style="color: #f8fafc">${(node.posts || 0).toLocaleString()}</span><br/>
                 類別：<span style="color: #f8fafc">${node.category}</span><br/>
+            </div>
         `,
         )
         //.nodeLabel((node) => `${node.name} (Group: ${node.group})`)

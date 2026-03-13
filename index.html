@@ -31,7 +31,7 @@
                         >
                     </h1>
                     <p class="text-xs text-slate-500 mobile-disable">
-                         Demo Site
+                        Demo Site
                     </p>
                 </div>
                 <div class="text-sm font-bold text-blue-600">
@@ -65,13 +65,22 @@
                     >
                         🍱 <span class="mobile-disable text-sm">分群比較</span>
                     </button>
+                    <button
+                        onclick="switchTab('sna')"
+                        id="btn-sna"
+                        class="py-2 px-1 text-lg font-medium text-slate-400 transition-all"
+                    >
+                        🕸️ <span class="mobile-disable text-sm">SNA比較</span>
+                    </button>
                 </nav>
 
                 <div
                     id="switch-algorithm"
                     class="flex items-center gap-2 bg-slate-700/50 px-1 py-1 rounded-lg border border-slate-600"
                 >
-                    <label for="algo-selector" class="text-xs text-slate-400 px-1"
+                    <label
+                        for="algo-selector"
+                        class="text-xs text-slate-400 px-1"
                         >演算法:</label
                     >
                     <select
@@ -194,6 +203,12 @@
             <div
                 id="tab-cluster"
                 class="hidden w-full overflow-x-auto bg-slate-900/20"
+                style="height: calc(100vh - 80px)"
+            ></div>
+
+            <div
+                id="tab-sna"
+                class="hidden w-full overflow-y-auto bg-slate-900/20 px-4 pb-20"
                 style="height: calc(100vh - 80px)"
             ></div>
         </main>

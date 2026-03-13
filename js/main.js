@@ -13,6 +13,7 @@ import {
 } from "./report.js";
 
 import { renderClusterComparisonView } from "./statistic.js";
+import { renderSnaComparisonView } from "./statistic_sna.js";
 
 // ==========================================
 // 全域狀態 (State)
@@ -105,6 +106,10 @@ async function switchAlgorithm(algoKey) {
         ) {
             renderClusterComparisonView();
         }
+        // 在 switchAlgorithm 的 try 區塊最後面 (原本 renderClusterComparisonView() 的下方) 加入：
+        if (!document.getElementById("tab-sna").classList.contains("hidden")) {
+            renderSnaComparisonView(algoKey);
+        }
     } catch (error) {
         console.error("載入失敗:", error);
         // [新增] 如果目前在分群比較頁面，切換演算法也要同步更新圖表
@@ -133,6 +138,7 @@ window.switchTab = (tab) => {
     const isNetwork = tab === "network";
     const isReport = tab === "data-report";
     const isCluster = tab === "cluster";
+    const isSna = tab === "sna"; // 新增判斷
 
     // 切換分頁顯示
     document
@@ -142,8 +148,9 @@ window.switchTab = (tab) => {
     document
         .getElementById("tab-cluster")
         .classList.toggle("hidden", !isCluster);
+    document.getElementById("tab-sna").classList.toggle("hidden", !isSna); // 綁定新容器
 
-    // 切換按鈕樣式 (修正原本 heatmap 的命名不一致問題)
+    // 切換按鈕樣式
     document
         .getElementById("btn-network")
         .classList.toggle("tab-active", isNetwork);
@@ -153,6 +160,7 @@ window.switchTab = (tab) => {
     document
         .getElementById("btn-cluster")
         ?.classList.toggle("tab-active", isCluster);
+    document.getElementById("btn-sna")?.classList.toggle("tab-active", isSna); // 綁定新按鈕
 
     // 控制工具列與搜尋框
     document
@@ -165,14 +173,16 @@ window.switchTab = (tab) => {
         .getElementById("search-section")
         .classList.toggle("hidden", !isNetwork);
 
-    // 演算法選擇器在網路和分群比較時都要顯示
+    // 演算法選擇器在網路、分群比較和 SNA 比較時都要顯示
     document
         .getElementById("switch-algorithm")
         .classList.toggle("hidden", isReport);
 
-    // 如果進入分群比較分頁，執行渲染
-    if (isCluster) {
-        renderClusterComparisonView();
+    // 執行渲染
+    if (isCluster) renderClusterComparisonView();
+    if (isSna) {
+        const algoKey = document.getElementById("algo-selector").value;
+        renderSnaComparisonView(algoKey);
     }
 };
 
