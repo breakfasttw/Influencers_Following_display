@@ -59,6 +59,10 @@ export function renderNetworkSummary(data, algoKey) {
                     <span class="text-slate-200 font-mono">${toPercent2(data["傳遞性(Transitivity)"])}</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-700/30 pb-1">
+                    <span class="text-slate-400">同質性係數(Transitivity)</span>
+                    <span class="text-slate-200 font-mono">${toPercent2(data["同質性係數(Assortativity)"])}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700/30 pb-1">
                     <span class="text-slate-400">團體凝聚力(Avg Clustering)</span>
                     <span class="text-slate-200 font-mono">${toPercent2(data["團體凝聚力(Avg Clustering)"])}</span>
                 </div>

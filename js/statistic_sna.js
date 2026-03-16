@@ -70,7 +70,7 @@ function processSnaData(summaryRes, nodesData, algoKey) {
         Transitivity: summaryRes["傳遞性(Transitivity)"],
         Reciprocity: summaryRes["互惠率(Reciprocity)"],
         Assortativity: summaryRes["同質性係數(Assortativity)"],
-        Assortativity: summaryRes["團體凝聚力(Avg Clustering)"],
+        "Avg Clustering": summaryRes["團體凝聚力(Avg Clustering)"],
         "Core-periphery Fit":
             summaryRes["核心邊陲結構適配度(Core-periphery Structure Fit)"],
     };
