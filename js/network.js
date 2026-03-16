@@ -47,6 +47,10 @@ export function renderNetworkSummary(data, algoKey) {
                     <span class="text-slate-200 font-mono">${toPercent2(data["密度(Density)"])}</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-700/30 pb-1">
+                    <span class="text-slate-400">密度(去孤島)</span>
+                    <span class="text-slate-200 font-mono">${toPercent2(data["密度去0(Density_0)"])}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700/30 pb-1">
                     <span class="text-slate-400">互惠率(Reciprocity)</span>
                     <span class="text-slate-200 font-mono">${toPercent2(data["互惠率(Reciprocity)"])}</span>
                 </div>
@@ -57,6 +61,10 @@ export function renderNetworkSummary(data, algoKey) {
                 <div class="flex justify-between border-b border-slate-700/30 pb-1">
                     <span class="text-slate-400">團體凝聚力(Avg Clustering)</span>
                     <span class="text-slate-200 font-mono">${toPercent2(data["團體凝聚力(Avg Clustering)"])}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-700/30 pb-1">
+                    <span class="text-slate-400">核心度(core periphery)</span>
+                    <span class="text-slate-200 font-mono">${toPercent2(data["核心邊陲結構適配度(Core-periphery Structure Fit)"])}</span>
                 </div>
             </div>
         </div>
@@ -132,8 +140,8 @@ export function initNetwork(gData) {
                 雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span><br/>
                 中介度：<span style="color: #f8fafc">${((node.metrics.between_centrality || 0) * 100).toFixed(2) + "%"}</span><br/>
                 中心性：<span style="color: #f8fafc">${((node.metrics["Eigenvector Centrality"] || 0) * 100).toFixed(3) + "%"}</span><br/>
-                聚集係數：<span style="color: #f8fafc">${((node.metrics["Local Clustering Coefficient"] || 0) ).toFixed(3)  }</span><br/>
-                核心度：<span style="color: #f8fafc">${((node.metrics["Core-periphery Coreness"] || 0) )  }</span><br/>
+                聚集係數：<span style="color: #f8fafc">${(node.metrics["Local Clustering Coefficient"] || 0).toFixed(3)}</span><br/>
+                核心度：<span style="color: #f8fafc">${node.metrics["Core-periphery Coreness"] || 0}</span><br/>
                 總粉絲數：<span style="color: #f8fafc">${(node.Followers || 0).toLocaleString()}</span><br/>
                 總追蹤他人：<span style="color: #f8fafc">${(node.Following || 0).toLocaleString()}</span><br/>
                 總貼文數：<span style="color: #f8fafc">${(node.posts || 0).toLocaleString()}</span><br/>

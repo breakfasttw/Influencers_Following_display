@@ -149,7 +149,7 @@ function buildClusterComparisonHtml(data) {
                 </div>
                 
                 <div class="h-10 font-bold text-emerald-300 flex items-center justify-center bg-emerald-900/10 border border-emerald-900/30 rounded font-mono text-sm">
-                    ${clusterDensity.toFixed(4)}
+                    ${(clusterDensity * 100).toFixed(2) + "%"}
                 </div>
                 
                 ${buildTop5Table(groupMembers, "cluster", "Within-module Degree", divisor)}
@@ -259,7 +259,7 @@ function buildNetworkAndHeatmapHtml(data) {
                                 ([k, v]) => `
                             <tr class="border-b border-slate-700/30 hover:bg-slate-700/50 transition-colors">
                                 <td class="py-4 font-medium text-slate-200 pr-2">${k}</td>
-                                <td class="py-4 text-right font-mono text-emerald-300 font-bold">${typeof v === "number" ? v.toFixed(4) : v}</td>
+                                <td class="py-4 text-right font-mono text-emerald-300 font-bold">${typeof v === "number" ? (v * 100).toFixed(4) + "%" : v}</td>
                             </tr>
                         `,
                             )
