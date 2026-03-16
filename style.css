@@ -189,7 +189,7 @@ body {
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 280px;
+    width: 320px;
     max-height: 300px;
     overflow-y: auto;
     background: rgba(15, 23, 42, 0.95);
@@ -200,7 +200,7 @@ body {
     border-radius: 12px;
     font-size: 11px;
     line-height: 1.6;
-    z-index: 100;
+    z-index: 99999;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     pointer-events: none; /* 防止滑鼠移入 Tooltip 導致閃爍 */
@@ -210,7 +210,7 @@ body {
 .group:hover .member-tooltip {
     visibility: visible;
     opacity: 1;
-    top: 60px; /* 輕微下移效果 */
+    top: 40px; /* 輕微下移效果 */
 }
 
 /* 修改捲動條樣式，讓 Tooltip 內部更好看 */

@@ -198,11 +198,15 @@ export function renderClusterComparisonView() {
             <div class="flex flex-col gap-6 p-4 bg-slate-900/80 rounded-xl border border-slate-700/30 w-28 shrink-0 shadow-lg">
                 <div class="sticky top-0 z-40 bg-slate-900 h-[60px] -mt-4 -mx-4 mb-4 border-b border-slate-700"></div>
                 
-                <div class="h-[250px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">類別佔比</div>
+                <div class="h-[200px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">類別佔比</div>
                 <div class="h-[140px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">Top 5 類別</div>
-                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">貼文分佈</div>
-                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">粉絲分佈</div>
-                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">追蹤分佈</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">貼文樹</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 border-b border-slate-700/50 text-xs text-center">粉絲數</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">追蹤數</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">中介度</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">中心性</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">聚集係數</div>
+                <div class="h-[180px] flex items-center justify-center font-bold text-slate-500 text-xs text-center">核心度</div>
             </div>
     `;
 
@@ -210,14 +214,14 @@ export function renderClusterComparisonView() {
         const memberList = comm.members.join("、");
 
         html += `
-            <div class="flex flex-col gap-6 min-w-[350px] shrink-0 bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-blue-500/30 transition-all">
+            <div class="flex flex-col gap-6 min-w-[250px] shrink-0 bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-blue-500/30 transition-all">
                 
                 <div class="sticky top-0 z-30 -mt-6 -mx-6 mb-2 bg-slate-900 border-b border-slate-700">
-                    <div class="relative group py-4 text-blue-400 font-black text-center cursor-help">
+                    <div class="relative group py-4 text-blue-400 font-black text-center cursor-help text-sm">
                         Group ${comm.name} <span class="text-xs font-normal text-white ml-1">(${comm.count}人)</span>
                         
                         <div class="member-tooltip">
-                            <div class="text-blue-400 font-bold mb-2 border-b border-slate-700 pb-1 text-left">網紅名單 (${comm.count})</div>
+                            
                             <div class="text-left text-slate-300 font-normal">${memberList}</div>
                         </div>
                     </div>
@@ -228,6 +232,10 @@ export function renderClusterComparisonView() {
                 <div id="comp-posts-${idx}" class="w-full h-[180px]"></div>
                 <div id="comp-followers-${idx}" class="w-full h-[180px]"></div>
                 <div id="comp-following-${idx}" class="w-full h-[180px]"></div>
+                <div id="comp-Network_Influence_Score-${idx}" class="w-full h-[180px]"></div>
+                <div id="comp-Eigenvector_Centrality-${idx}" class="w-full h-[180px]"></div>
+                <div id="comp-Local_Clustering_Coefficient-${idx}" class="w-full h-[180px]"></div>
+                <div id="comp-Core-periphery_Coreness-${idx}" class="w-full h-[180px]"></div>
             </div>
         `;
     });
@@ -355,6 +363,30 @@ function drawComparisonCharts(idx, groupMetrics) {
         `comp-following-${idx}`,
         groupMetrics.map((d) => d.Following || 0),
         "#34d399",
+        boxMargin,
+    );
+    drawEnhancedBoxPlot(
+        `comp-Network_Influence_Score-${idx}`,
+        groupMetrics.map((d) => d.Network_Influence_Score || 0),
+        "#3471d3",
+        boxMargin,
+    );
+        drawEnhancedBoxPlot(
+        `comp-Eigenvector_Centrality-${idx}`,
+        groupMetrics.map((d) => d.Eigenvector_Centrality || 0),
+        "#fbbf24",
+        boxMargin,
+    );
+        drawEnhancedBoxPlot(
+        `comp-Local_Clustering_Coefficient-${idx}`,
+        groupMetrics.map((d) => d.Local_Clustering_Coefficient || 0),
+        "#34d399",
+        boxMargin,
+    );
+        drawEnhancedBoxPlot(
+        `comp-Core-periphery_Coreness-${idx}`,
+        groupMetrics.map((d) => d["Core-periphery_Coreness"] || 0),
+        "#3471d3",
         boxMargin,
     );
 }

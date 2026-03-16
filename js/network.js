@@ -131,6 +131,9 @@ export function initNetwork(gData) {
                 追蹤他人：<span style="color: #f8fafc">${node.metrics.out_degree}</span><br/>
                 雙向互粉：<span style="color: #f8fafc">${node.metrics.mutual}</span><br/>
                 中介度：<span style="color: #f8fafc">${((node.metrics.between_centrality || 0) * 100).toFixed(2) + "%"}</span><br/>
+                中心性：<span style="color: #f8fafc">${((node.metrics["Eigenvector Centrality"] || 0) * 100).toFixed(3) + "%"}</span><br/>
+                聚集係數：<span style="color: #f8fafc">${((node.metrics["Local Clustering Coefficient"] || 0) ).toFixed(3)  }</span><br/>
+                核心度：<span style="color: #f8fafc">${((node.metrics["Core-periphery Coreness"] || 0) )  }</span><br/>
                 總粉絲數：<span style="color: #f8fafc">${(node.Followers || 0).toLocaleString()}</span><br/>
                 總追蹤他人：<span style="color: #f8fafc">${(node.Following || 0).toLocaleString()}</span><br/>
                 總貼文數：<span style="color: #f8fafc">${(node.posts || 0).toLocaleString()}</span><br/>

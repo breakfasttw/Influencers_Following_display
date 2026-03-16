@@ -18,14 +18,13 @@ export async function renderSnaComparisonView(algoKey) {
 
         const div1Html = buildClusterComparisonHtml(processedData);
         const div2Html = buildNetworkAndHeatmapHtml(processedData);
-        
+
         // 【修改這裡】：將 div2 (Network & Heatmap) 放在前面，div1 (Cluster 表格) 放在後面
         container.innerHTML = div2Html + div1Html;
 
         setTimeout(() => {
             drawHeatmap(processedData);
         }, 50);
-
     } catch (error) {
         console.error("載入 SNA 比較資料失敗:", error);
         container.innerHTML = `<div class="text-red-400 text-center py-10 border border-red-900/50 bg-red-900/10 rounded-lg mx-4 mt-4">資料讀取失敗，請檢查 JSON 格式或網路狀態。</div>`;
@@ -71,6 +70,7 @@ function processSnaData(summaryRes, nodesData, algoKey) {
         Transitivity: summaryRes["傳遞性(Transitivity)"],
         Reciprocity: summaryRes["互惠率(Reciprocity)"],
         Assortativity: summaryRes["同質性係數(Assortativity)"],
+        Assortativity: summaryRes["團體凝聚力(Avg Clustering)"],
         "Core-periphery Fit":
             summaryRes["核心邊陲結構適配度(Core-periphery Structure Fit)"],
     };
@@ -105,14 +105,14 @@ function buildClusterComparisonHtml(data) {
 
     let html = `
         <div class="flex flex-col bg-slate-800/40 rounded-xl border border-slate-700/50 shadow-lg">
-            <div class="p-4 bg-slate-800 rounded-t-xl border-b border-slate-700 font-bold text-blue-400">
-                📊 Cluster SNA 數值比較
+            <div class="p-4 bg-slate-800 rounded-t-xl border-b border-slate-700 font-bold text-blue-400 text-md">
+                Cluster SNA 數值比較
             </div>
             <div class="w-full overflow-auto max-h-[65vh] relative custom-scrollbar">
                 <div class="flex flex-row p-4 gap-4 w-max">
                     
                     <div class="flex flex-col gap-4 w-[110px] shrink-0 bg-slate-900 rounded-xl border border-slate-700 p-2 sticky left-0 z-40 shadow-[4px_0_15px_rgba(0,0,0,0.5)]">
-                        <div class="h-8 font-bold text-slate-300 border-b border-slate-700 flex items-center justify-center text-xs">SNA 指標</div>
+                        <div class="h-12 font-bold text-slate-300 border-b border-slate-700 flex items-center justify-center text-xs">SNA 指標</div>
                         <div class="h-10 font-bold text-emerald-400 flex items-center justify-center px-1 bg-emerald-900/10 rounded border border-emerald-900/30 text-[10px] text-center leading-tight">Cluster Density</div>
                         <div class="h-[140px] font-bold text-sky-400 flex items-center justify-center px-1 border-b border-slate-700/50 text-[10px] text-center leading-tight">Within-mod<br>Degree</div>
                         <div class="h-[140px] font-bold text-sky-400 flex items-center justify-center px-1 border-b border-slate-700/50 text-[10px] text-center leading-tight">Participation<br>Coefficient</div>
@@ -129,18 +129,21 @@ function buildClusterComparisonHtml(data) {
 
     groupKeys.forEach((gk, i) => {
         const groupMembers = groupedNodes[gk];
-        // 處理鍵值對應，支援 "Group_0" 或 "Group_A" 的格式
-        const summaryGroupKey = `Group_${gk.charCodeAt(0) - 65}`; 
-        let clusterDensity = clusterData["Cluster Density"][`Group_${i}`] || clusterData["Cluster Density"][summaryGroupKey] || 0;
-        const memberListStr = groupMembers.map(m => m.name).join("、");
+        const summaryGroupKey = `Group_${gk.charCodeAt(0) - 65}`;
+        let clusterDensity =
+            clusterData["Cluster Density"][`Group_${i}`] ||
+            clusterData["Cluster Density"][summaryGroupKey] ||
+            0;
+        const memberListStr = groupMembers.map((m) => m.name).join("、");
 
         html += `
             <div class="flex flex-col gap-4 w-[280px] shrink-0 bg-slate-900/50 rounded-xl border border-slate-700 p-4 hover:border-blue-500/40 transition-colors">
                 
-                <div class="relative group h-8 font-bold text-blue-400 border-b border-slate-700 flex justify-center items-center cursor-help">
+                <div class="relative group h-12 font-bold text-blue-400 border-b border-slate-700 flex justify-center items-center cursor-help text-md">
                     Group ${gk} <span class="text-xs font-normal text-white ml-1">(${groupMembers.length})</span>
-                    <div class="absolute hidden group-hover:block z-50 bg-slate-800 border border-slate-600 p-4 rounded shadow-2xl text-xs w-[320px] left-1/2 -translate-x-1/2 top-full mt-2 max-h-[300px] overflow-y-auto">
-                        <div class="text-blue-400 font-bold mb-2 border-b border-slate-700 pb-1 text-left sticky top-0 bg-slate-800">成員名單</div>
+                    
+                    <div class="member-tooltip absolute z-50 bg-slate-800/95 backdrop-blur-sm border border-slate-600 p-4 rounded-xl shadow-2xl text-xs w-[400px] left-1/2 -translate-x-1/2 max-h-[300px] overflow-y-auto">
+
                         <div class="text-slate-300 whitespace-normal leading-relaxed text-left">${memberListStr}</div>
                     </div>
                 </div>
@@ -149,23 +152,23 @@ function buildClusterComparisonHtml(data) {
                     ${clusterDensity.toFixed(4)}
                 </div>
                 
-                ${buildTop5Table(groupMembers, 'cluster', 'Within-module Degree', divisor)}
-                ${buildTop5Table(groupMembers, 'cluster', 'Participation Coefficient', divisor)}
+                ${buildTop5Table(groupMembers, "cluster", "Within-module Degree", divisor)}
+                ${buildTop5Table(groupMembers, "cluster", "Participation Coefficient", divisor)}
                 
-                ${buildTop5Table(groupMembers, 'metrics', 'in_degree', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'out_degree', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'mutual', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'network_influence', divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "in_degree", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "out_degree", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "mutual", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "network_influence", divisor)}
                 
-                ${buildTop5Table(groupMembers, 'metrics', 'between_centrality', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'Eigenvector Centrality', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'Local Clustering Coefficient', divisor)}
-                ${buildTop5Table(groupMembers, 'metrics', 'Core-periphery Coreness', divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "between_centrality", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "Eigenvector Centrality", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "Local Clustering Coefficient", divisor)}
+                ${buildTop5Table(groupMembers, "metrics", "Core-periphery Coreness", divisor)}
             </div>
         `;
     });
 
-    html += `</div></div></div>`; 
+    html += `</div></div></div>`;
     return html;
 }
 
@@ -248,21 +251,25 @@ function buildNetworkAndHeatmapHtml(data) {
     return `
         <div class="flex flex-col lg:flex-row gap-6 mt-4 mb-6">
             <div class="flex-[1] bg-slate-800/40 rounded-xl border border-slate-700/50 shadow-lg p-6 min-w-[250px]">
-                <div class="font-bold text-emerald-400 border-b border-slate-700 pb-3 mb-4 text-lg">🌐 Network SNA</div>
+                <div class="font-bold text-emerald-400 border-b border-slate-700 pb-3 mb-4 text-md">Network-Level SNA</div>
                 <table class="w-full text-left text-sm text-slate-300">
                     <tbody>
-                        ${Object.entries(networkMetrics).map(([k, v]) => `
+                        ${Object.entries(networkMetrics)
+                            .map(
+                                ([k, v]) => `
                             <tr class="border-b border-slate-700/30 hover:bg-slate-700/50 transition-colors">
                                 <td class="py-4 font-medium text-slate-200 pr-2">${k}</td>
-                                <td class="py-4 text-right font-mono text-emerald-300 font-bold">${typeof v === 'number' ? v.toFixed(4) : v}</td>
+                                <td class="py-4 text-right font-mono text-emerald-300 font-bold">${typeof v === "number" ? v.toFixed(4) : v}</td>
                             </tr>
-                        `).join("")}
+                        `,
+                            )
+                            .join("")}
                     </tbody>
                 </table>
             </div>
 
-            <div class="flex-[3] bg-slate-800/40 rounded-xl border border-slate-700/50 shadow-lg p-6 min-w-[300px]">
-                <div class="font-bold text-amber-400 border-b border-slate-700 pb-3 mb-4 text-lg">🔥 Inter-cluster Edge Density</div>
+            <div class="flex-[4] bg-slate-800/40 rounded-xl border border-slate-700/50 shadow-lg p-6 min-w-[300px]">
+                <div class="font-bold text-amber-400 border-b border-slate-700 pb-3 mb-4 text-md">Inter-cluster Edge Density</div>
                 <div id="sna-heatmap" class="w-full h-[320px]"></div>
             </div>
         </div>
